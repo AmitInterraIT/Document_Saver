@@ -1,0 +1,19 @@
+﻿/*body {
+    background:linear-gradient(135deg,#71b7e6,#9b59b6);
+}*/
+.container {
+    max-width: 450px;
+    width: 98%;
+    background: #fff;
+    border-radius: 5px;
+    margin-right: 31%;
+    margin-bottom: 30px;
+    height: 95%;
+    margin-top: 2%;
+}
+.input-box{
+    margin:10px;
+}
+.details {
+    margin: 10px;
+}

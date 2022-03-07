@@ -1,0 +1,67 @@
+﻿@model User
+
+ <link rel="stylesheet" href="~/css/Login.css" />
+<div class="container">
+    <div class="container h-100">
+        <h2>
+        Registration
+        </h2>
+        <h3 class="container-1">
+            Already have an account?  <a asp-controller="User" asp-action="Login">Sign in</a>
+        </h3>
+
+        </div>
+
+<div class="container-2">
+    <div class="w-12">
+        <img src="~/css/logo.jpg" class="ng-tns" />
+    </div>
+    <form method="post" asp-controller="User" asp-action="Create">
+            <div asp-validation-summary="ModelOnly"></div>
+        <div class= "user-details">
+            <div class="input-box">
+               <label asp-for="User_Name" class="details">User Name</label>
+                  <input asp-for="User_Name" placeholder="Enter your name" class="form-control"/>
+                  <span asp-validation-for="User_Name" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Email" class="details">E-mail</label>
+                <input asp-for="User_Email"placeholder="Enter your E_mail"  class="form-control"/>
+                <span asp-validation-for="User_Email" class="text-danger"></span>
+
+            </div>
+        
+            <div class="input-box">
+               <label asp-for="User_Password" class="details">Password</label>
+               <input asp-for="User_Password"placeholder="Enter your password" type="password" class="form-control"/>
+               <span asp-validation-for="User_Password" class="text-danger"></span>
+            </div>
+         
+            <div class="input-box">
+               <label asp-for="User_Phone" class="details">Phone</label>
+                <input asp-for="User_Phone"placeholder="Enter your number" class="form-control"/>
+                <span asp-validation-for="User_Phone" class="text-danger"></span>
+
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Emp_Id" class="details">Emp-Id</label>
+                <input asp-for="User_Emp_Id"placeholder="Enter your Emp_Id" class="form-control"/>
+                <span asp-validation-for="User_Emp_Id" class="text-danger"></span>
+
+            </div>
+        
+             <button class="btn btn-primary"   type="submit" style="width:250px margin-top:50px;"> Register</button>
+          
+           
+      </div>
+          </form>
+    </div> 
+  </div>
+
+  
+       
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

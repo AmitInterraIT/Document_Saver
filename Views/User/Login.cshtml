@@ -1,0 +1,99 @@
+﻿@model User
+<html lang="en" class="h-full bg-gray-100 js-focus-visible" data-js-focus-visible=""><head>
+    <meta charset="utf-8">
+    <link rel="preload" href="/fonts/Inter-roman.var.woff2?v=3.18" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/css/app.css?id=37145931fafe5943ee15a0e56b1aea61">
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <title>Login</title>
+      </head>
+  <body class="font-sans antialiased text-gray-600 min-h-full flex flex-col min-h-full flex flex-col relative">
+      <div class="container">
+    <main class="relative z-10 flex-auto flex items-center justify-center text-sm text-center text-gray-600 py-16 px-4 sm:px-6 lg:px-8">
+  <div class="w-full max-w-sm">
+      <div class="w-12">
+        <img src="~/css/logo.jpg" class="ng-tns" />
+    </div>
+    <h1 class="sr-only">Log in to your account</h1>
+
+<form  method="POST">
+
+  <div class="relative">
+    <label asp-for="User_Email" for="email-address" class="sr-only">Email address</label>
+    <input asp-for="User_Email" id="email-address"  type="email" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="Email address">
+  <span asp-validation-for="User_Name" class="text-danger"></span>      
+</div>
+
+  <div class="relative">
+    <label asp-for="User_Name" for="password" class="sr-only" style="padding:8px 16px;">Password</label>
+    <input asp-for="User_Name" style="padding:8px 16px;"  id="password"  type="password" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-6 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="Password">
+      <span asp-validation-for="User_Password" class="text-danger"></span>
+</div>
+
+  <button type="submit" class="submit" style="background-color:grey; margin-top:20px; padding: 8px 84px; ">
+    Sign in to account
+  </button>
+
+  <p class="text-center">
+    <a href="#" class="text-sm underline hover:text-gray-900">Forgot password?</a>
+  </p>
+</form>
+  </div>
+</main>
+
+<footer class="relative z-10 flex-none text-sm text-center py-4 px-4 sm:px-6 lg:px-8">
+  <div class="text-gray-900 sm:flex sm:items-center sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+  <p>Don't have an account?</p>
+  <a href="#" class="rounded-md border border-gray-300 hover:border-gray-400 py-2 px-10 font-medium flex items-center justify-center">
+    Get access
+  </a>
+</div>
+</footer>
+      </div>
+
+</body></html>
+
+@*<body>
+   <div class="container">
+    <h2>
+        Login
+        </h2>
+        </div>
+<form method="post">
+    <div class="border p-3 mt-4">    
+        <div class="row pb-4">
+
+
+            <div asp-validation-summary="ModelOnly">
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="User_Name">Name</label>
+               <input asp-for="User_Name" class="form-control"/>
+               <span asp-validation-for="User_Name" class="text-danger"></span>
+            </div>
+          
+              <div class="mb-3">
+               <label asp-for="User_Password">Password</label>
+               <input asp-for="User_Password" type="password" class="form-control"/>
+               <span asp-validation-for="User_Password" class="text-danger"></span>
+
+            </div>
+              <a asp-controller="User" asp-action="Create"  class="btn btn-secondary" style="width:150px">For Regestration Click here</a>
+              <br />
+              <br />
+           
+
+
+          </div>
+           <button type="submit" class="block w-full py-2 px-3 border border-transparent rounded-md text-white font-medium bg-gray-700 shadow-sm sm:text-sm mb-10 hover:bg-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50">
+    Sign in to account
+  </button>
+     </div>
+ </form>
+</body>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+   *@

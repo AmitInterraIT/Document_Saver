@@ -1,0 +1,62 @@
+﻿@model User
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="User_Id" hidden />
+    <div class="border p-3 mt-4">    
+        <div class="row pb-4">
+            <h2 class="text-primary">
+                Delete
+            </h2>
+            <hr />
+            </div>
+
+           
+           <div asp-validation-summary="All"></div>
+           <div class= "user-details">
+               <div class="input-box">
+               <label asp-for="User_Id" class="details">User Id</label>
+                  <input asp-for="User_Id" placeholder="Enter your name" class="form-control"/>
+                  <span asp-validation-for="User_Id" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Name" class="details">User Name</label>
+                  <input asp-for="User_Name" placeholder="Enter your name" class="form-control"/>
+                  <span asp-validation-for="User_Name" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Email" class="details">E-mail</label>
+                <input asp-for="User_Email"placeholder="Enter your E_mail" class="form-control"/>
+                <span asp-validation-for="User_Email" class="text-danger"></span>
+
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Password" class="details">Password</label>
+                <input asp-for="User_Password"placeholder="Enter your password" class="form-control"/>
+                <span asp-validation-for="User_Password" class="text-danger"></span>
+
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Phone" class="details">Phone</label>
+                <input asp-for="User_Phone"placeholder="Enter your number" class="form-control"/>
+                <span asp-validation-for="User_Phone" class="text-danger"></span>
+
+            </div>
+            <div class="input-box">
+               <label asp-for="User_Emp_Id" class="details">Emp-Id</label>
+                <input asp-for="User_Emp_Id"placeholder="Enter your Emp_Id" class="form-control"/>
+                <span asp-validation-for="User_Emp_Id" class="text-danger"></span>
+
+            </div>
+            <div class="input-box">
+               <label asp-for="Status" class="details">Emp-Id</label>
+                <input asp-for="Status"placeholder="Enter your Emp_Id" class="form-control"/>
+                <span asp-validation-for="Status" class="text-danger"></span>
+
+            </div>
+            <button class="btn btn-danger" type="submit" style="width:150px">Delete</button>
+            <a asp-controller="Admin" asp-action="Index"  class="btn btn-secondary" style="width:150px">Back To List</a>
+
+        </div>
+        </div>
+
+</form>

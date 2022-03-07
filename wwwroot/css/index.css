@@ -1,0 +1,23 @@
+﻿
+p {
+    margin: 120px 50px 75px 100px;
+}
+
+.container {
+    display: inline;
+}
+
+.tab1cards {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.card {
+    padding: 16px;
+    text-align: center;
+}
+
+.text {
+    text-align: center;
+}
