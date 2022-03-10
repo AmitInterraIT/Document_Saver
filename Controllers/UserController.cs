@@ -35,12 +35,25 @@ namespace Document_Saver.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isEmailAlreadyExists = _DB.UserDetails.Any(x => x.User_Email == obj.User_Email);
+                if (isEmailAlreadyExists)
+                {
+                    TempData["AlertMessage"] = "Email Id is Already Registered...";
+                    return View(obj);
+                }
+
+                User newobj = new User();
+                newobj.User_Emp_Id = obj.User_Emp_Id;
+                newobj.User_Email = obj.User_Email;
                 _DB.UserDetails.Add(obj);
                 _DB.SaveChanges();
+                TempData["AlertMessage"] = "Registered Successfully...";
                 return RedirectToAction("VerifyMsg");
 
             }
+
             return View(obj);
+           
         }
 
         public IActionResult Login()
@@ -68,9 +81,11 @@ namespace Document_Saver.Controllers
                 return RedirectToAction("Dashboard", "ProjectDetails");
             }
 
+
+
             return View();
         }
-       
+      
     }
  }
 

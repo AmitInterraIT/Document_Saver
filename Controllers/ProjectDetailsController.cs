@@ -18,7 +18,9 @@ namespace Document_Saver.Controllers
         }
         public IActionResult Dashboard()
         {
-            return View();
+            IEnumerable<ProjectDetails> objcategoriesList = _DB.ProjectDetails;
+            return View(objcategoriesList);
         }
+       
     }
 }

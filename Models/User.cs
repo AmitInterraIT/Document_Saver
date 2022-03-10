@@ -19,8 +19,10 @@ namespace Document_Saver.Models
         [StringLength(15, ErrorMessage = "Password Cannot Exceed")]
         public string User_Password { get; set; }
         [Required]
-        [Range(1, 100000000000000, ErrorMessage = "Enter Right Value")]
-        public int User_Phone { get; set; }
+        [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string User_Phone { get; set; }
         [StringLength(6, ErrorMessage = "Emp_Id Cannot Exceed")]
         public string User_Emp_Id { get; set; }
 
