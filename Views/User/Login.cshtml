@@ -18,14 +18,14 @@
 <form  method="POST">
 
   <div class="relative">
-    <label asp-for="User_Email" for="email-address" class="sr-only">Email address</label>
-    <input asp-for="User_Email" id="email-address"  type="email" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="Email address">
+    <label asp-for="User_Name" for="email-address" class="sr-only">Name</label>
+    <input asp-for="User_Name" id="email-address"  type="text" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="User_Name">
   <span asp-validation-for="User_Name" class="text-danger"></span>      
 </div>
 
   <div class="relative">
-    <label asp-for="User_Name" for="password" class="sr-only" style="padding:8px 16px;">Password</label>
-    <input asp-for="User_Name" style="padding:8px 16px;"  id="password"  type="password" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-6 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="Password">
+    <label asp-for="User_Password" for="password" class="sr-only" style="padding:8px 16px;">Password</label>
+    <input asp-for="User_Password" style="padding:8px 16px;"  id="password"  type="password" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-6 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="Password">
       <span asp-validation-for="User_Password" class="text-danger"></span>
 </div>
 
