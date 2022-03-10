@@ -52,21 +52,21 @@ namespace Document_Saver.Controllers
         public IActionResult Login(User obj)
         {
 
-            var us = _DB.UserDetails.Where(x => x.User_Email.Equals(obj.User_Email) && x.User_Password.Equals(obj.User_Password)).FirstOrDefault();
+            var us = _DB.UserDetails.Where(x => x.User_Name.Equals(obj.User_Name)).FirstOrDefault();
             if (us.Status == 0)
             {
-                ViewBag.Status = "Not Verified";
+                TempData["AlertMessage"] = "Your Account is not verified yet...";
+            }
+            var usS = _DB.UserDetails.Where(x => x.User_Password.Equals(obj.User_Password)).FirstOrDefault();
+            if (usS == null)
+            {
+                TempData["AlertMessage"] = "Please Enter Right Password";
             }
             else if (us.Status == 1)
             {
-                TempData["UserName"] = us.User_Name;
-                return RedirectToAction("Dashboard");
-            }
-            else if(us.User_Name=="Admin" && us.User_Password=="Admin")
-            {
-                return RedirectToAction("Index");
-            }
 
+                return RedirectToAction("Dashboard", "ProjectDetails");
+            }
 
             return View();
         }

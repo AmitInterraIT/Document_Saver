@@ -10295,11 +10295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RahulS\\Desktop\\Project\\Document_Saver\\Document_Saver.csproj",
+      "projectUniqueName": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\Document_Saver.csproj",
       "projectName": "Document_Saver",
-      "projectPath": "C:\\Users\\RahulS\\Desktop\\Project\\Document_Saver\\Document_Saver.csproj",
+      "projectPath": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\Document_Saver.csproj",
       "packagesPath": "C:\\Users\\RahulS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RahulS\\Desktop\\Project\\Document_Saver\\obj\\",
+      "outputPath": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\RahulS\\AppData\\Roaming\\NuGet\\NuGet.Config",
