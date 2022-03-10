@@ -3,6 +3,8 @@
     <meta charset="utf-8">
     <link rel="preload" href="/fonts/Inter-roman.var.woff2?v=3.18" as="font" type="font/woff2" crossorigin="">
     <link rel="stylesheet" href="/css/app.css?id=37145931fafe5943ee15a0e56b1aea61">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/ bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJ1SAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/ 5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy +KY81q0G4B3CyeY6wYHN3yt9PW0XpSriV1kMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="~/css/Login.css" />
     <title>Login</title>
       </head>
@@ -16,10 +18,35 @@
     <h1 class="sr-only">Log in to your account</h1>
 
 <form  method="POST">
+    @if(TempData["AlertMessage"] != null)
+    {
+       
+            <div class="alert alert-Error">
+                <strong>Error...!   </strong> @TempData["AlertMessage"]
 
+            </div>
+    }
+    <div class="text-center mb-3">
+                    <h6 class="text-blueGray-500 text-sm font-bold">
+                      Sign in with
+                    </h6>
+                    <div class="btn-wrapper text-center">
+                    <button class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" type="button">
+                      <img style="width:20px; height:20px;" alt="..." class="w-5 mr-1" src="~/css/Github.jpg">Github</button>&nbsp;&nbsp;
+                      <button class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" type="button">
+                      <img style="width:20px; height:20px;" alt="..." class="w-5 mr-1" src="~/css/Google.jpg">Google
+                    </button>
+                  </div>
+
+                  </div>
+                  <div class="text-blueGray-400 text-center mb-3 font-bold">
+                    <small>Or sign in with credentials</small>
+                  </div>
   <div class="relative">
-    <label asp-for="User_Name" for="email-address" class="sr-only">Name</label>
-    <input asp-for="User_Name" id="email-address"  type="text" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="User_Name">
+     
+    <label asp-for="User_Name" for="User name" class="sr-only">User name</label>
+     <i class="fas fa-user"></i>
+    <input asp-for="User_Name" id="User name"  type="name" required="" class="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none" placeholder="User name">
   <span asp-validation-for="User_Name" class="text-danger"></span>      
 </div>
 
@@ -50,7 +77,8 @@
 </footer>
       </div>
 
-</body></html>
+</body>
+</html>
 
 @*<body>
    <div class="container">

@@ -21,6 +21,6 @@ namespace Document_Saver.Controllers
             IEnumerable<ProjectDetails> objcategoriesList = _DB.ProjectDetails;
             return View(objcategoriesList);
         }
-       
+
     }
 }
