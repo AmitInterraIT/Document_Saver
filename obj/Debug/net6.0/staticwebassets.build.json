@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+hA4S2NdPd4L5aDiTlTWCarZQ7+gJEU9AqqIUQrDun0=",
+  "Hash": "v7PAEb/gX6LhmtEXTj7vaActGqxQG6vexJwwHyPbh8I=",
   "Source": "Document_Saver",
   "BasePath": "_content/Document_Saver",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\card3.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\css\\Dashboard.css",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "css/Dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Dashboard.css"
     },
     {
       "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\css\\Github.jpg",
@@ -323,6 +340,40 @@
       "OriginalItemSpec": "wwwroot\\css\\Support.css"
     },
     {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\css\\Verify.css",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "css/Verify.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Verify.css"
+    },
+    {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\css\\verify.png",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "css/verify.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\verify.png"
+    },
+    {
       "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\css\\wall.jpg",
       "SourceId": "Document_Saver",
       "SourceType": "Discovered",
@@ -355,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\js\\Dashboard.js",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "js/Dashboard.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Dashboard.js"
     },
     {
       "Identity": "C:\\Users\\RahulS\\Desktop\\Document Saver\\Document_Saver\\wwwroot\\js\\site.js",
