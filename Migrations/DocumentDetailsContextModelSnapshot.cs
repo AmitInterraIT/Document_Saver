@@ -101,8 +101,9 @@ namespace Document_Saver.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("User_Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("User_Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("User_Id");
 

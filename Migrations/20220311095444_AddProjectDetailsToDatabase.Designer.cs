@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Document_Saver.Migrations
 {
     [DbContext(typeof(DocumentDetailsContext))]
-    [Migration("20220307032955_AddUserDetailsToDatabase")]
-    partial class AddUserDetailsToDatabase
+    [Migration("20220311095444_AddProjectDetailsToDatabase")]
+    partial class AddProjectDetailsToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,8 +103,9 @@ namespace Document_Saver.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("User_Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("User_Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("User_Id");
 

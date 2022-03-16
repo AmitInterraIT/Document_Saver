@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Document_Saver.Migrations
 {
-    public partial class AddUserDetailsToDatabase : Migration
+    public partial class AddUserToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,7 @@ namespace Document_Saver.Migrations
                     User_Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     User_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User_Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    User_Phone = table.Column<int>(type: "int", nullable: false),
+                    User_Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User_Emp_Id = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     User_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Created_At = table.Column<DateTime>(type: "datetime2", nullable: false),
