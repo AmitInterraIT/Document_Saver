@@ -22,6 +22,15 @@
 @*                <a class="navbar-brand" style="margin-right:60%" asp-area="" asp-controller="Home" asp-action="Index">
                     Document Management System
                 </a*@
+                @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-link text-dark d-flex" asp-area="" asp-controller="Home" asp-action="Support">
+                            <i class="bi bi-chat-dots-fill" style= "padding-right: 8px" alt="" width="30" height="24" class="d-inline-block align-text-top"></i>
+                            Support
+                        </a>
+                    }
+                    else
+                    {
                 <a class="navbar-brand " style = "margin-left: 140px;" asp-area="" asp-controller="Home" asp-action="Index">
                     <h4>Document Management System</h4>
                 </a>
@@ -38,13 +47,13 @@
                   <i class="bi bi-box-arrow-in-right" style= "padding-right: 8px" alt="" width="30" height="24" class="d-inline-block align-text-top"></i>
                   Login
                 </a>
-                <a class="nav-link text-dark d-flex" asp-area="" asp-controller="Home" asp-action="Support">
-                  <i class="bi bi-chat-dots-fill" style= "padding-right: 8px" alt="" width="30" height="24" class="d-inline-block align-text-top"></i>
-                  Support
-                </a>
-            </div>
+               
+                  
+                </div>
+                   }
           </div>
         </nav>
+      
 @*        <nav id="na" class="navbar navbar-expand-sm bg-light navbar-light">
         
 
