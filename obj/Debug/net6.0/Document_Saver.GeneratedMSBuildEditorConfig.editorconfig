@@ -8,69 +8,69 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Document_Saver
 build_property.RootNamespace = Document_Saver
-build_property.ProjectDir = C:\Users\RahulS\Desktop\Project\Document_Saver\
+build_property.ProjectDir = C:\Users\AniketS\Documents\GitHub\Document_Saver\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\RahulS\Desktop\Project\Document_Saver
+build_property.MSBuildProjectDirectory = C:\Users\AniketS\Documents\GitHub\Document_Saver
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Admin/Delete.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Admin/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Admin/Edit.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Admin/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Admin/Index.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Home/Index.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Home/Support.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Home/Support.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXBwb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/ProjectDetails/Dashboard.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/ProjectDetails/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Shared/Error.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Shared/_Notification.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/User/Create.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/User/Login.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/User/VerifyMsg.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/User/VerifyMsg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxWZXJpZnlNc2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/_ViewImports.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/_ViewStart.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/RahulS/Desktop/Project/Document_Saver/Views/Shared/_Layout.cshtml]
+[C:/Users/AniketS/Documents/GitHub/Document_Saver/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-y4x6nolte9
