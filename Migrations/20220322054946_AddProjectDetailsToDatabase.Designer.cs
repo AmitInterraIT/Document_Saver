@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Document_Saver.Migrations
 {
     [DbContext(typeof(DocumentDetailsContext))]
-    [Migration("20220311095405_AddUserToDatabase")]
-    partial class AddUserToDatabase
+    [Migration("20220322054946_AddProjectDetailsToDatabase")]
+    partial class AddProjectDetailsToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,12 +32,15 @@ namespace Document_Saver.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Project_Id"), 1L, 1);
 
-                    b.Property<string>("Associated_Managers")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Created_At")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Created_By")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Process_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Project_Description")
                         .IsRequired()
@@ -49,6 +52,9 @@ namespace Document_Saver.Migrations
 
                     b.Property<DateTime>("Updated_At")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Updated_By")
+                        .HasColumnType("int");
 
                     b.HasKey("Project_Id");
 

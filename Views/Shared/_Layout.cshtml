@@ -14,7 +14,7 @@
     <header>
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md border-bottom navbar-light bg-light">
           <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="https://www.interrait.com/sites/default/files/logo_opt.png" />
@@ -95,33 +95,49 @@
         </main>
     </div>
 
-    <footer style="height: 10%; margin-bottom : -150px"class="border-top footer text-muted">
+    @*<footer style="height: 10%; margin-bottom : -150px"class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Document Management System -
+            
+            <h2 style="margin-left: 40px;margin-top: -53px;">Quick Links</h2>
                 <br />
-            <div style="margin-left: 58px;">
-            <button style="margin-left: 6px;" type="button" class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</button>&nbsp; &nbsp;
-             <button style="margin-left: 57px;"type="button" class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Support">Support</button>&nbsp; &nbsp;<br />
-             <button type="button" class="btn btn-dark" asp-area="" asp-controller="User" asp-action="Create">Sign Up</button>&nbsp; &nbsp;
-             <button style="margin-left: 53px;" type="button" class="btn btn-dark" asp-area="" asp-controller="Home" asp-action="Login">Sign In</button>
+            <div style="margin-left: 58px; margin-top: -56px;">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>&nbsp; &nbsp; <br />
+             <a asp-area="" asp-controller="Home" asp-action="Support">Support</a>&nbsp; &nbsp;<br />
+             <a asp-area="" asp-controller="User" asp-action="Create">Sign Up</a>&nbsp; &nbsp; <br />
+             <a asp-area="" asp-controller="Home" asp-action="Login">Sign In</a>
             </div>
+
+
+            &copy; 2022 - Document Management System -
         </div>
-        <div style="margin-left: 981px; margin-top: -220px;" class="gsc-column col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div style="margin-left: 981px; margin-top: -343px;" class="gsc-column col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="column-inner bg-size-cover">
                 <div  class="column-context-allAdressBox">
-                    <h4>Global Delivery Centers- NOIDA</h4>
-                    <p style="line-height: 1.5em; margin-top: 40px; margin-left: 12px">
-                        "SDF E-22,"
+                    <h4>Corporate Headquarter</h4>
+                    <p class="address"style="line-height: 1.5em; margin-top: 40px; margin-left: 12px">
+                        1731 Technology Drive, Suite 760,
                         <br />
-                        "Noida SpecialEconomic Zone,"
+                        San Jose, CA 95110 USA
                         <br />
-                        "India"
+                        Tel: +1 408 451 1700
                         <br />
-                        "Tel: +91 120 256 8037"
-                        <br />
-                        "Fax: +91 120 256 8110."
+                        Fax: +1 408 441 7495
                     </p>
-                </div>
+                    </div>
+                    <div style="margin-top: -94px;" class="branches">
+                    <h4 >Branches:</h4>
+                    <div class="d-flex branchA" style="margin-left: -100px; margin-top: -100px;">
+                        <p class="one"><i class="bi bi-geo-alt-fill"></i>Noida</p>
+                        
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Noida</p>
+                    </div>
+                    
+                    <div class="d-flex" style="margin-left: -100px; margin-top: -194px;">
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Kolkata</p>
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Canada</p>
+                    </div>
+                    </div>
+                
             </div>
         </div>
         <div style="margin-top: -255px; margin-left: 585px;">
@@ -129,7 +145,86 @@
                     <img src="https://www.interrait.com/sites/default/files/logo_opt.png" />
                 </a>
         </div>
-    </footer>
+    </footer>*@
+     <footer style="position: relative"class="footer" id="footer">
+
+  <span class="col">
+    <h3 class="col-title">Quick Links</h3>
+    <nav class="col-list">
+      <ul>
+        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Support">Support</a></li>
+        <li><a asp-area="" asp-controller="User" asp-action="Create">Sign Up</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Login">Sign In</a></li>
+        </ul>
+      &copy; 2022 - Document Management System
+    </nav>
+  </span>
+  <span class="col">
+          <div >
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="https://www.interrait.com/sites/default/files/logo_opt.png" />
+                </a>
+        </div>
+    </span>
+<span class="col">
+  <div  class="gsc-column col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="column-inner bg-size-cover">
+                <div  class="column-context-allAdressBox">
+                    <h4>Corporate Headquarter</h4>
+                    <p class="address"style="line-height: 1.5em; margin-top: 40px; margin-left: 12px">
+                        1731 Technology Drive, Suite 760,
+                        <br />
+                        San Jose, CA 95110 USA
+                        <br />
+                        Tel: +1 408 451 1700
+                        <br />
+                        Fax: +1 408 441 7495
+                    </p>
+                    </div>
+                    <div class="branches">
+                    <h4 >Branches:</h4>
+                    <div class="d-flex branchA" >
+                        <p class="one"><i class="bi bi-geo-alt-fill"></i>Noida</p>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;
+                        
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Noida</p>
+                    </div>
+                    
+                    <div class="d-flex" >
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Kolkata</p>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;
+                        <p class="two"><i class="bi bi-geo-alt-fill"></i>Canada</p>
+                    </div>
+                    </div>
+                
+            </div>
+        </div>
+</span>
+
+
+@*  <span class="col">
+    <h3 class="col-title">Resources</h3>
+    <nav class="col-list">
+      <ul>
+        <li><a href="#">Developer API</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+  </span>
+
+  <span class="col">
+    <h3 class="col-title">Company</h3>
+    <nav class="col-list">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </nav>
+  </span>*@
+</footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

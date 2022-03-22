@@ -1,5 +1,5 @@
 ﻿
-p {
+.p1 {
     margin: 100px 50px 125px 100px;
 }
 
@@ -41,4 +41,25 @@ p {
 
 #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;  /*If you want dots under the hoverable text */
+}
+
+     
+.tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+        visibility: visible;
 }

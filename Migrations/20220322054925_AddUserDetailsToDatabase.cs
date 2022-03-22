@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Document_Saver.Migrations
 {
-    public partial class AddUserToDatabase : Migration
+    public partial class AddUserDetailsToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,9 +17,11 @@ namespace Document_Saver.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Project_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Project_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Associated_Managers = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Created_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Updated_At = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Updated_At = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Created_By = table.Column<int>(type: "int", nullable: false),
+                    Updated_By = table.Column<int>(type: "int", nullable: false),
+                    Process_Id = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
