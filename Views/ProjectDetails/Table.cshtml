@@ -4,7 +4,7 @@
     var objectProjectlist = ViewData["ProjectList"] as IEnumerable<ProjectDetails>;
 }
 
-<div class"cotainer  p-3">
+<div class="cotainer  p-3">
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Project List</h2>
@@ -18,7 +18,60 @@
     </div>
     <br /> <br />
     </div>
-<h1>Project</h1>
+    @*Filter by dropdown*@
+ <div  class="d-flex w-100">
+     <div style="width: 30%" class="d-flex ">
+    <div class="dropdown">  
+    <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter By
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Project</a></li>
+        <li><a class="dropdown-item" href="#">User</a></li>
+        <li><a class="dropdown-item" href="#">Document Type</a></li>
+          <li><a class="dropdown-item" href="#">Document Name</a></li>
+          <li><a class="dropdown-item" href="#">Date Between</a></li>
+      </ul>
+    </div>&nbsp;
+
+    
+@*Sort by dropdown*@
+
+
+    <div class="dropdown">  
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort By
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Ascending</a></li>
+            <li><a class="dropdown-item" href="#">Descending</a></li>
+          </ul>
+    </div>
+    </div>
+
+ @*   <div class="input-group">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" />
+        <label class="form-label" for="form1">Search</label>
+      </div>
+      <button type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>*@
+    <div style = " width:40%;"class="form-outline">
+      
+      <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+
+    </div>
+
+</div>
+
+
+
+    <div style="margin-left: 980px"class="view d-flex">
+        <button type="button" class="btb btn-dark">Gallery</button>&nbsp;
+        <button type="button" class="btb btn-dark">Table</button>
+    </div>
 
 <table class="table table-bordered table-striped" style="width:100%":>
 
@@ -69,11 +122,11 @@
                       
                 <td>
                     <div class=w-75 btn-group" role="group">
-                        <a asp-action="Edit" asp-controller="category" asp-route-Id="@obj.Project_Id" class="btn btn-primary mx-2">Edit<i class="bi bi-pencil-square"></i></a>
+                        <a asp-action="Edit" asp-controller="category" asp-route-Id="@obj.Project_Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i></a>
 
                     </div>
                     <div class=w-75 btn-group" role="group">
-                        <a asp-action="Delete" asp-controller="category" asp-route-Id="@obj.Project_Id" class="btn btn-danger mx-2">Delete<i class="bi bi-trash"></i></a>
+                        <a asp-action="Delete" asp-controller="category" asp-route-Id="@obj.Project_Id" class="btn btn-danger mx-2"><i class="bi bi-trash"></i></a>
 
                     </div>
                 </td>

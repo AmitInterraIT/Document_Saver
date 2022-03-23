@@ -1,0 +1,72 @@
+﻿@model Document_Saver.Models.ProjectDetails
+
+
+<form method="post" asp-action="Create">
+    <div class="border p-3 mt-4">    
+        <div class="row pb-4">
+            <h2 class="text-primary">
+                Create Category
+            </h2>
+            <hr />
+            </div>
+
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+               <label asp-for="Project_Id"></label>
+                  <input asp-for="Project_Id" class="form-control"/>
+                  <span asp-validation-for="Project_Id" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+               <label asp-for="Project_Name"></label>
+                <input asp-for="Project_Name" class="form-control"/>
+                <span asp-validation-for="Project_Name" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Project_Description"></label>
+                <input asp-for="Project_Description" class="form-control"/>
+                <span asp-validation-for="Project_Description" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Created_By"></label>
+                <input asp-for="Created_By" class="form-control"/>
+                <span asp-validation-for="Created_By" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Updated_By"></label>
+                <input asp-for="Updated_By" class="form-control"/>
+                <span asp-validation-for="Updated_By" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Created_At"></label>
+                <input asp-for="Updated_By" class="form-control"/>
+                <span asp-validation-for="Updated_By" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Updated_At"></label>
+                <input asp-for="Updated_At" class="form-control"/>
+                <span asp-validation-for="Updated_At" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+               <label asp-for="Process_Id"></label>
+                <input asp-for="Process_Id" class="form-control"/>
+                <span asp-validation-for="Process_Id" class="text-danger"></span>
+
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:150px">Create</button>
+            <a asp-controller="ProjectDetails" asp-action="Table" class="btn btn-secondary" style="width:150px">Back To List</a>
+
+        </div>
+
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+
