@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AniketS\\Documents\\GitHub\\Document_Saver\\Document_Saver.csproj": {}
+    "D:\\Rachit\\Project\\New folder\\Document_Saver\\Document_Saver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AniketS\\Documents\\GitHub\\Document_Saver\\Document_Saver.csproj": {
+    "D:\\Rachit\\Project\\New folder\\Document_Saver\\Document_Saver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AniketS\\Documents\\GitHub\\Document_Saver\\Document_Saver.csproj",
+        "projectUniqueName": "D:\\Rachit\\Project\\New folder\\Document_Saver\\Document_Saver.csproj",
         "projectName": "Document_Saver",
-        "projectPath": "C:\\Users\\AniketS\\Documents\\GitHub\\Document_Saver\\Document_Saver.csproj",
-        "packagesPath": "C:\\Users\\AniketS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AniketS\\Documents\\GitHub\\Document_Saver\\obj\\",
+        "projectPath": "D:\\Rachit\\Project\\New folder\\Document_Saver\\Document_Saver.csproj",
+        "packagesPath": "C:\\Users\\RohitS\\.nuget\\packages\\",
+        "outputPath": "D:\\Rachit\\Project\\New folder\\Document_Saver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AniketS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RohitS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
