@@ -65,7 +65,7 @@ namespace Document_Saver.Controllers
                 _DB.ProjectDetails.Update(obj);
                 _DB.SaveChanges();
                 TempData["success"] = "Data Updated Successfully";
-                return RedirectToAction("Index");
+                return RedirectToAction("Table");
             }
             return View(obj);
         }
@@ -88,9 +88,9 @@ namespace Document_Saver.Controllers
         //post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? Id)
+        public IActionResult DeletePost(int? Project_Id)
         {
-            var obj = _DB.ProjectDetails.Find(Id);
+            var obj = _DB.ProjectDetails.Find(Project_Id);
             if (obj == null)
             {
                 return NotFound();
