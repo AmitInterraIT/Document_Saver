@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r5q5t6qJ1eTO298e/I0+XiM3VHU2LJfuskrPZGShfPQ=",
+  "Hash": "SOpWxM8p6KQueRzMeuACEJWsvO62SVQeswZ/YIPsL8w=",
   "Source": "Document_Saver",
   "BasePath": "_content/Document_Saver",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\document2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\css\\Documents1.css",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "css/Documents1.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Documents1.css"
     },
     {
       "Identity": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\css\\Github.jpg",
@@ -389,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "wwwroot\\css\\Projects.cshtml"
+    },
+    {
+      "Identity": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\css\\Projects.css",
+      "SourceId": "Document_Saver",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\",
+      "BasePath": "_content/Document_Saver",
+      "RelativePath": "css/Projects.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Projects.css"
     },
     {
       "Identity": "C:\\Users\\RahulS\\Desktop\\Project\\New folder\\Document_Saver\\wwwroot\\css\\Screen Saver 2[9].jpg",
