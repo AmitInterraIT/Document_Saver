@@ -3,9 +3,12 @@ using Document_Saver.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Document_Saver.Controllers
 {
+
+    [Authorize]
     public class ProjectDetailsController : Controller
     {
         private readonly DocumentDetailsContext _DB;
@@ -15,10 +18,18 @@ namespace Document_Saver.Controllers
         }
 
         [Authorize]
+
         public IActionResult Dashboard()
         {
-            /*IEnumerable<ProjectDetails> objcategoriesList = _DB.ProjectDetails;*/
             return View();
+            /*var accessToken = HttpContext.Session.GetString("JWTOken");
+            var Url = baseUrl;
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization= new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",accessToken);
+            string jsonstr =await client.GetStringAsync(Url);
+            var res = JsonConvert.DeserializeObject<List<IActionResult>>(jsonstr);
+            return res;*/
+
 
         }
         public IActionResult Table()
@@ -104,6 +115,22 @@ namespace Document_Saver.Controllers
 
 
         }
-
+        public IActionResult Projects()
+        {
+            return View();
+        }
     }
-}
+
+
+
+        /*  public static string baseUrl = "http://localhost:9762/api/Login";
+          [HttpGet]*/
+        /*public async Task <IActionResult> Index()
+        {
+           
+            return View();
+
+        }*/
+      
+    }
+

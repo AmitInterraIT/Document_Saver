@@ -12,9 +12,9 @@ namespace Document_Saver.Data
         public DbSet<User> UserDetails { get; set; }
         public DbSet<ProjectDetails> ProjectDetails { get; set; }
 
-        //public DbSet<Activities> Activity { get; set; }
-        //public DbSet<ProjectMember> ProjectMember { get; set; }
-        //public DbSet<Documents> Document { get; set; }
+        public DbSet<Activities> Activity { get; set; }
+        public DbSet<ProjectMember> ProjectMember { get; set; }
+        public DbSet<Documents> Document { get; set; }
 
     }
 }

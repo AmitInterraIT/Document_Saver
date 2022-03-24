@@ -34,6 +34,6 @@ namespace Document_Saver.Models
         public string Updated_By { get; set; } = "";
         public int Status { get; set; } = 0;
 
-       
+        public string Process_Id { get; set; } = "";
     }
 }

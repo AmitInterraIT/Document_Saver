@@ -8,7 +8,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
-
+using Document_Saver.Services;
+using System.Diagnostics;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Document_Saver.Controllers
 {
@@ -16,11 +21,16 @@ namespace Document_Saver.Controllers
     public class UserController : Controller
     {
 
+        private IConfiguration _config;
         private readonly DocumentDetailsContext _DB;
-        public UserController(DocumentDetailsContext DB)
+        public UserController(IConfiguration config, DocumentDetailsContext DB)
         {
+            _config = config;
             _DB = DB;
         }
+
+       
+
         public IActionResult Index()
         {
             IEnumerable<User> objcategoriesList = _DB.UserDetails;
@@ -52,6 +62,7 @@ namespace Document_Saver.Controllers
                     return View(obj);
                 }
 
+                obj.Process_Id = Process.GetCurrentProcess().Id.ToString();
 
                 _DB.UserDetails.Add(obj);
                 _DB.SaveChanges();
@@ -63,65 +74,106 @@ namespace Document_Saver.Controllers
             return View(obj);
 
         }
-    
-        public IActionResult Login()
-        {
-            return View();
-        }
-    
-    
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task< IActionResult> Login (User obj,string ReturnUrl,string User_Name)
-        {
-           
-                        var us = _DB.UserDetails.Where(x => x.User_Name.Equals(obj.User_Name)).FirstOrDefault();
-                        if (us.Status == 0)
-                        {
-                            TempData["AlertMessage"] = "Your Account is not verified yet...";
-                        }
-                     
-                        if (us.User_Password!= obj.User_Password)
-                        {
-                            TempData["AlertMessage"] = "Please Enter Right Password";
-                        }
-           else if (us.Status == 1)
-           {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, obj.User_Name),
-                   
-                };
-                var claimsIdentity = new ClaimsIdentity(
-                    
-                    
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                var props = new AuthenticationProperties();
- 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                return RedirectToAction("Dashboard", "ProjectDetails");
-
-                            
-           }
-            if ((obj.User_Name == "Admin") && (obj.User_Password == "Admin"))
+         public IActionResult Login()
             {
-                return RedirectToAction("Index", "Admin");
+                return View();
             }
 
 
-            return View();
-            
-        }
-       [Route("logout")]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Login", "User");
-        }
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> Login(User obj, string ReturnUrl, string User_Name)
+            {
+
+                var us = _DB.UserDetails.Where(x => x.User_Name.Equals(obj.User_Name)).FirstOrDefault();
+                if (us.Status == 0)
+                {
+                    TempData["AlertMessage"] = "Your Account is not verified yet...";
+                }
+
+                if (us.User_Password != obj.User_Password)
+                {
+                    TempData["AlertMessage"] = "Please Enter Right Password";
+                }
+                else if (us.Status == 1)
+                {
+                   
+
+                    JWTTokenServices jwt = new JWTTokenServices(_config);
+                    string token = jwt.GenerateJSONWebToken(obj);
+
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
+                        using (var response = await httpClient.PostAsync("http://localhost:9762/api/Login", stringContent))
+                        {
+                            
+                            if (token != null)
+                            {
+                                HttpContext.Session.SetString("token", token);
+                              
+                                
+                            }
+
+                            return RedirectToAction("Dashboard", "ProjectDetails");
+                           
+                        }
+
+
+                      
+
+                    }
+
+                }
+
+
+            }
+
+                if ((obj.User_Name == "Admin") && (obj.User_Password == "Admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+
+                return View();
+
+            }
+        //public async Task<IActionResult> Login(User obj)
+
+        //{
+        //    using (var httpClient = new HttpClient())
+        //    {
+        //        StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
+        //        using (var response = await httpClient.PostAsync("http://localhost:9762/api/Login", stringContent))
+        //        {
+        //            string token = await response.Content.ReadAsStringAsync();
+        //            if (token == "Invalid credentials")
+        //            {
+        //                return RedirectToAction("Login", "User");
+        //            }
+
+        //            HttpContext.Session.SetString("token", token);
+        //        }
+
+        //        return RedirectToAction("Dashboard", "ProjectDetails");
+
+        //    }
         
+        //}
+            [Route("logout")]
+            public async Task<IActionResult> Logout()
+            {
+                await HttpContext.SignOutAsync();
+                return RedirectToAction("Login", "User");
+            }
+        
+
+     }
     }
- }
-  
+    
+
+
    
 

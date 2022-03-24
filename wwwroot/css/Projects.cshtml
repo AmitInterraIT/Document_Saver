@@ -1,0 +1,390 @@
+﻿<!doctype html>
+<html lang="en" dir = "ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Projects</title>
+  <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link  href="~/css/Projects.css" rel="stylesheet"/>
+		<script src = "~/js/Projects.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="~/css/Projects.css">
+</head>
+<body>
+
+<div style="margin-left:900px;">
+	<button type="button" class="btn btn-success">Create New Project</button>
+</div>	
+
+<div style="margin-left:876px;" class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Gallery View')">Gallery View</button>
+  <button class="tablinks" onclick="openCity(event, 'Table View')">Table View</button>
+</div>
+
+<!-- Tab content -->
+<div style="margin-top:-53px;" id="Gallery View" class="tabcontent">
+  <h3>Gallery View</h3>
+  @*<p></p>*@
+</div>
+
+<div style ="margin-top:-53px;" id="Table View" class="tabcontent">
+  <h3>Table View</h3>
+  @*<p></p>*@
+</div>
+
+
+
+				
+	
+@*DropDown*@
+	
+<div class="dropdown">  
+   <button style = "margin-left:170px;margin-bottom:-160px; margin-right:10px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter By
+   </button>
+   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Project</a></li>
+    <li><a class="dropdown-item" href="#">Documents</a></li>
+   </ul>
+</div>
+
+
+
+
+<div class="dropdown">  
+<button style = "margin-bottom:-112px;margin-left:42px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort By
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Ascending</a></li>
+    <li><a class="dropdown-item" href="#">Descending</a></li>
+  </ul>
+</div>
+
+
+@*cards*@
+
+<div style = "margin-top:28px; margin-left:300px; width:40%;"class="form-outline">
+	
+  <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+
+</div>
+	
+<div class="wrapper">
+
+	<div class="cards_wrap">
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+		         <a href = "https://www.google.co.in/">
+				<img src="~/css/Projectimage.jpg">
+				</a>
+			 </div>
+				<div class="doc_name">Project1</div>
+				<div class="project_name">.NET</div>
+				<div class="User_name">Name1</div>
+				@*<div style = "margin-top:8px;">
+				<button type="button" class="btn btn-success">Download</button>
+				</div>*@
+				@*<div style = "margin-top:8px;">
+				<button type="button" class="btn btn-primary">Share</button>
+				</div>*@
+
+	
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/angular.png">
+				</a>
+				</div>
+				<div class="doc_name">Project2</div>
+				<div class="project_name">Angular</div>
+				<div class="User_name">Name2</div>
+				@*<div style = "margin-top:8px;">
+				<button type="button" class="btn btn-success">Download</button>
+				</div>
+				<div style = "margin-top:8px;">
+				<button type="button" class="btn btn-primary">Share</button>
+				</div>*@
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+
+			</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/aws image.png">
+				</a>
+				</div>
+				<div class="doc_name">Project3</div>
+				<div class="project_name">AWS</div>
+				<div class="User_name">Name3</div>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+			</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/mobile.jpg">
+				</a>
+				</div>
+				<div class="doc_name">Project4</div>
+				<div class="project_name">Mobile App development</div>
+				<div class="User_name">Name4</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+			</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/nodejs.png">
+				</a>
+				</div>
+				<div class="doc_name">Project5</div>
+				<div class="project_name">Node JS</div>
+				<div class="User_name">Name5</div>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+			</div>
+		</div>
+		<div class="card_item">
+			<div  class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/uxui.png">
+				</a>
+				</div>
+				<div class="doc_name">Project6</div>
+				<div class="project_name">UX/UI</div>
+				<div class="User_name">Name6</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+			</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/Projectimage.jpg">
+				</a>
+				</div>
+				<div class="doc_name">Project7</div>
+				<div class="project_name">NET</div>
+				<div class="User_name">Name7</div>
+
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+				
+			</div>
+		</div>
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/angular.png">
+				</a>
+				</div>
+				<div class="doc_name">Project8</div>
+				<div class="project_name">Angular</div>
+				<div class="User_name">Name8</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+			</div>
+		</div>
+
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/aws image.png">
+				</a>
+				</div>
+				<div class="doc_name">Project9</div>
+				<div class="project_name">AWS</div>
+				<div class="User_name">Name9</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+			</div>
+		</div>
+
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/testing.jpg">
+				</a>
+				</div>
+				<div class="doc_name">Project10</div>
+				<div class="project_name">Testing</div>
+				<div class="User_name">Name10</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+			</div>
+		</div>
+
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<a href = "https://www.google.co.in/">
+				<img src="~/css/Projectimage.jpg">
+				</a>
+				</div>
+				<div class="doc_name">Project11</div>
+				<div class="project_name">UX</div>
+				<div class="User_name">Name11</div>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
+<a href=""><i class="bi bi-plus-square-fill"></i></a>
+</div>
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+</div>
+ 
+	
+
+
+			</div>
+		</div>
+
+		<div class="card_item">
+			<div class="card_inner">
+				<div class = "box">
+					<div style = "width:150px;">
+                  <a href = "https://www.google.co.in/">
+				<img src="~/css/Projectimage.jpg">
+				</a></div>
+				
+
+				</div>
+				<div class="doc_name">Project12</div>
+				<div class="project_name">HR</div>
+				<div class="User_name">Name12</div>
+				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+
+<div style = "margin-top:-45px;  margin-left:75px; font-size:1.8em;">
+<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+</div>
+			</div>
+		</div>
+	</div>
+</div> 
+
+@*Pagination*@
+
+@*<nav style = "margin-left:530px"  aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	<li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>*@
+
+</body>
+</html>

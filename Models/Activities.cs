@@ -9,11 +9,13 @@ namespace Document_Saver.Models
         [Required]
         public bool Activity_Type { get; set; }
         [Required]
-        public string Activity_Title { get; set; }
-        public DateTime Project_Created_At { get; set; }
-        public DateTime Project_Updated_At { get; set; }
-        public DateTime Document_Created_At { get; set; }
-        public DateTime Document_Updated_At { get; set; }
-        public DateTime Document_Deleted_At { get; set; }
+        public string Description { get; set; }
+        public string Activity_User_Id { get; set; }
+        public DateTime Project_Created_At { get; set; }= DateTime.Now;
+        public string Device_Name { get; set; }
+        public string Device_Type { get; set; }
+        public string Browser_Name { get; set; }
+        public string PI_Address { get; set; }
+        public string Process_Id { get; set; } = "";
     }
  }

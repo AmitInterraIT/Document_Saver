@@ -1,10 +1,14 @@
 using Document_Saver.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 /*using Microsoft.AspNetCore.Identity;*/
 
+
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,19 +21,41 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
  .AddCookie(options =>
   {
       options.LoginPath = "/User/Login";
-      /*  options.AccessDeniedPath = "User/AccessDenied";*/
+     /* options.AccessDeniedPath = "User/AccessDenied";*/
       options.SlidingExpiration = true;
       options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
-      
+
 
   });
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddAuthorization(options =>
+builder.Services.AddSession(Options =>
+Options.IdleTimeout = TimeSpan.FromMinutes(1));
+/*builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdminRole",
          policy => policy.RequireRole("Admin"));
-});
+});*/
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
 
 builder.Services.AddMvc();
 
@@ -42,32 +68,25 @@ if (!app.Environment.IsDevelopment())
   
 }
 
+
 app.UseStaticFiles();
 app.UseCookiePolicy();
 app.UseRouting();
-
+app.UseSession();
+app.Use(async (context, next) =>
+{
+    var JWToken = context.Session.GetString("JWToken");
+    if (!string.IsNullOrEmpty(JWToken))
+    {
+        context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
+    }
+    await next();
+});
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
 app.Run();
-/*{
-    builder.Services.AddDistributedMemoryCache();
-
-
-
-    builder.Services.AddSession(options =>
-    {
-        options.IdleTimeout = TimeSpan.FromSeconds(10);
-        options.Cookie.HttpOnly = true;
-        options.Cookie.IsEssential = true;
-    });
-
-    builder.Services.AddControllersWithViews();
-    builder.Services.AddRazorPages();
-}
-
-app.UseSession();
-*/
