@@ -15,6 +15,6 @@ namespace Document_Saver.Models
         public DateTime Updated_At { get; set; }= DateTime.Now;
         public string Created_By { get; set; } = "";
         public string Updated_By { get; set; } = "";
-        public string Process_Id { get; set; }
+        public string Process_Id { get; set; } = "";
     }
 }

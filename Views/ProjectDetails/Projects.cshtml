@@ -1,4 +1,9 @@
-﻿<!doctype html>
+﻿@{
+    ViewData["Title"] = "Index";
+    var objectProjectlist = ViewData["ProjectList"] as IEnumerable<ProjectDetails>;
+}
+
+<!doctype html>
 <html lang="en" dir = "ltr">
 <head>
   <meta charset="utf-8">
@@ -12,7 +17,9 @@
 <body>
 
 <div style="margin-left:900px;">
-	<button type="button" class="btn btn-success">Create New Project</button>
+	            <a asp-controller="ProjectDetails" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp;
+                Create new Project</a>
 </div>	
 
 <div style="margin-left:876px;" class="tab">
@@ -68,44 +75,40 @@
   <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
 
 </div>
-	
+	@foreach (var obj in Model )
+{
 <div class="wrapper">
 
-	<div class="cards_wrap">
-		<div class="card_item">
+	<div class="d-inline cards_wrap">
+		<div class="card_item" style="width: 18rem;">
 			<div class="card_inner">
 				<div class = "box">
 		         <a href = "https://www.google.co.in/">
 				<img src="~/css/Projectimage.jpg">
 				</a>
 			 </div>
-				<div class="doc_name">Project1</div>
-				<div class="project_name">.NET</div>
-				<div class="User_name">Name1</div>
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-success">Download</button>
-				</div>*@
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-primary">Share</button>
-				</div>*@
+				<div class="doc_name">@obj.Project_Name</div>
+				<div class="project_name">@obj.Project_Id</div>
+				<div class="User_name">@obj.Project_Description</div>
 
-	
-<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
-<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
-</div>
-</div>
-		</div>
-		<div class="card_item">
+
+
+			<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+			<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
+			</div>
+
+
+
+			<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+			<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
+			</div>
+			</div>
+
+			</div>
+
+
+@*		<div class="card_item">
 			<div class="card_inner">
 				<div class = "box">
 					<a href = "https://www.google.co.in/">
@@ -115,24 +118,14 @@
 				<div class="doc_name">Project2</div>
 				<div class="project_name">Angular</div>
 				<div class="User_name">Name2</div>
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-success">Download</button>
-				</div>
-				<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-primary">Share</button>
-				</div>*@
+
 <div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 
 			</div>
@@ -148,17 +141,12 @@
 				<div class="project_name">AWS</div>
 				<div class="User_name">Name3</div>
 <div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -172,18 +160,13 @@
 				<div class="doc_name">Project4</div>
 				<div class="project_name">Mobile App development</div>
 				<div class="User_name">Name4</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -198,17 +181,12 @@
 				<div class="project_name">Node JS</div>
 				<div class="User_name">Name5</div>
 <div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -222,18 +200,13 @@
 				<div class="doc_name">Project6</div>
 				<div class="project_name">UX/UI</div>
 				<div class="User_name">Name6</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -248,12 +221,13 @@
 				<div class="project_name">NET</div>
 				<div class="User_name">Name7</div>
 
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 				
 			</div>
@@ -268,12 +242,13 @@
 				<div class="doc_name">Project8</div>
 				<div class="project_name">Angular</div>
 				<div class="User_name">Name8</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -288,12 +263,13 @@
 				<div class="doc_name">Project9</div>
 				<div class="project_name">AWS</div>
 				<div class="User_name">Name9</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -308,12 +284,13 @@
 				<div class="doc_name">Project10</div>
 				<div class="project_name">Testing</div>
 				<div class="User_name">Name10</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
 		</div>
@@ -329,17 +306,12 @@
 				<div class="project_name">UX</div>
 				<div class="User_name">Name11</div>
 <div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px; margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-<div style = "margin-top:-45px; margin-left:145px; font-size:1.8em;">
-<a href=""><i class="bi bi-plus-square-fill"></i></a>
-</div>
+
 <div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
-<a href=""><i class="bi bi-three-dots-vertical"></i></a>
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
  
 	
@@ -361,18 +333,19 @@
 				<div class="doc_name">Project12</div>
 				<div class="project_name">HR</div>
 				<div class="User_name">Name12</div>
-				<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:10px; margin-left:110px; font-size: 2em;">
+<a asp-action="Edit" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" > <i class ="bi bi-plus-square-fill"></i> </a>
 </div>
 
-<div style = "margin-top:-45px;  margin-left:75px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+
+<div style = "margin-top:-45px; margin-left:175px; font-size:1.8em;">
+<a asp-action="Delete" asp-controller="ProjectDetails" asp-route-Id="@obj.Project_Id" ><i class="bi bi-trash"></i></a>
 </div>
 			</div>
-		</div>
+		</div>*@
 	</div>
 </div> 
-
+}
 @*Pagination*@
 
 @*<nav style = "margin-left:530px"  aria-label="Page navigation example">

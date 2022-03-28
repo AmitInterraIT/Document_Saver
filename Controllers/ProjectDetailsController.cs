@@ -16,7 +16,7 @@ namespace Document_Saver.Controllers
             _DB = DB;
         }
 
-        [Authorize]
+        
 
         public IActionResult Dashboard()
         {
@@ -116,7 +116,9 @@ namespace Document_Saver.Controllers
         }
         public IActionResult Projects()
         {
-            return View();
+
+            IEnumerable<ProjectDetails> objProjectList = _DB.ProjectDetails;
+            return View(objProjectList);
         }
     }
 

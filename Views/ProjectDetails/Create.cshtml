@@ -2,15 +2,20 @@
 
 
 <form method="post" asp-action="Create">
-    <div class="border p-3 mt-4">    
+    <div style="justify-content: space-between;"class="d-flex border p-3 mt-4">    
         <div class="row pb-4">
             <h2 class="text-primary">
                 Create Category
             </h2>
             <hr />
             </div>
-
-            <div asp-validation-summary="ModelOnly"></div>
+        <div class="pb-4">
+            <a asp-controller="ProjectDetails" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp;
+                Add Members</a>
+        </div>
+        </div>
+           @* <div asp-validation-summary="ModelOnly"></div>*@
             <div class="mb-3">
                <label asp-for="Project_Id"></label>
                   <input asp-for="Project_Id" class="form-control"/>
@@ -27,7 +32,7 @@
                 <input asp-for="Project_Description" class="form-control"/>
                 <span asp-validation-for="Project_Description" class="text-danger"></span>
 
-            </div>
+@*            </div>
             <div class="mb-3">
                <label asp-for="Created_By"></label>
                 <input asp-for="Created_By" class="form-control"/>
@@ -57,11 +62,12 @@
                 <input asp-for="Process_Id" class="form-control"/>
                 <span asp-validation-for="Process_Id" class="text-danger"></span>
 
-            </div>
-            <button class="btn btn-primary" type="submit" style="width:150px">Create</button>
-            <a asp-controller="ProjectDetails" asp-action="Table" class="btn btn-secondary" style="width:150px">Back To List</a>
+            </div>*@
+
 
         </div>
+            <button class="btn btn-primary" type="submit" style="width:150px">Create</button>
+            <a asp-controller="ProjectDetails" asp-action="Table" class="btn btn-secondary" style="width:150px">Back To List</a>
 
 </form>
 @section Scripts{

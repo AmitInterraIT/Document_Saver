@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Document_Saver.Migrations
 {
     [DbContext(typeof(DocumentDetailsContext))]
-    [Migration("20220324051336_AddTablesToDatabase")]
+    [Migration("20220325040147_AddTablesToDatabase")]
     partial class AddTablesToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
