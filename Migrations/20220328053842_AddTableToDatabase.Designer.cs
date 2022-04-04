@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Document_Saver.Migrations
 {
     [DbContext(typeof(DocumentDetailsContext))]
-    [Migration("20220325040147_AddTablesToDatabase")]
-    partial class AddTablesToDatabase
+    [Migration("20220328053842_AddTableToDatabase")]
+    partial class AddTableToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -217,6 +217,9 @@ namespace Document_Saver.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProjectDetailsProject_Id")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -256,6 +259,8 @@ namespace Document_Saver.Migrations
 
                     b.HasKey("User_Id");
 
+                    b.HasIndex("ProjectDetailsProject_Id");
+
                     b.ToTable("UserDetails");
                 });
 
@@ -287,6 +292,18 @@ namespace Document_Saver.Migrations
                     b.Navigation("ProjectDetails");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Document_Saver.Models.User", b =>
+                {
+                    b.HasOne("Document_Saver.Models.ProjectDetails", null)
+                        .WithMany("ProjectMembers")
+                        .HasForeignKey("ProjectDetailsProject_Id");
+                });
+
+            modelBuilder.Entity("Document_Saver.Models.ProjectDetails", b =>
+                {
+                    b.Navigation("ProjectMembers");
                 });
 #pragma warning restore 612, 618
         }

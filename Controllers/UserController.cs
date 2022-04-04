@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Document_Saver.Controllers
 {
@@ -168,9 +169,19 @@ namespace Document_Saver.Controllers
                 await HttpContext.SignOutAsync();
                 return RedirectToAction("Login", "User");
             }
-        
 
-     }
+        public ActionResult AddUser(string searching)
+        {
+            return View(_DB.UserDetails.Where(x => x.User_Name.Contains(searching) || searching == null).ToList());
+            //IEnumerable<User> objcategoriesList = _DB.UserDetails;
+            //ViewData["objcategoriesList"] = objcategoriesList;
+            //return View(objcategoriesList);
+
+
+        }
+
+
+    }
     }
     
 

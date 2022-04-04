@@ -1,12 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Document_Saver.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Document_Saver.Controllers
 {
     public class ProjectMemberController : Controller
     {
-        public IActionResult Index()
+        private readonly DocumentDetailsContext _DB;
+        public ProjectMemberController(DocumentDetailsContext DB)
+        {
+            _DB = DB;
+        }
+        public IActionResult Inde()
         {
             return View();
         }
     }
-}
+
+
+       
+
+
+
+ }

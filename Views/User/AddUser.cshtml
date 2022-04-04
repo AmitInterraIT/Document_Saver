@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Document_Saver.Models.User>
+@*@{
+    ViewData["Title"] = "Index";
+    var objectuserlist = ViewData["objcategoriesList"]  as  IEnumerable<Document_Saver.Models.User>;
+}*@
+
+
+
+
+@*@model Document_Saver.Models.User;*@
+<partial name="_Notification"></partial>
+
+<div class"cotainer  p-3">
+    <div class="row pt-4">
+
+    </div>
+    <br /> <br />
+    </div>
+
+<h1>User List</h1>
+    @*Filter by dropdown*@
+  
+    <div style="float: right;"  class="d-flex w-100">
+     <div style="width: 30%" class="d-flex ">
+    <div class="dropdown">  
+    <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter By
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Project</a></li>
+        <li><a class="dropdown-item" href="#">User</a></li>
+        <li><a class="dropdown-item" href="#">Document Type</a></li>
+          <li><a class="dropdown-item" href="#">Document Name</a></li>
+          <li><a class="dropdown-item" href="#">Date Between</a></li>
+      </ul>
+    </div>&nbsp;
+
+    
+@*Sort by dropdown*@
+
+
+    <div class="dropdown">  
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort By
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Ascending</a></li>
+            <li><a class="dropdown-item" href="#">Descending</a></li>
+          </ul>
+    </div>
+    </div>
+
+    <div style = " width:40%;"class="form-outline">
+      
+             @using (Html.BeginForm("AddUser","User",FormMethod.Get))
+        {
+            @Html.TextBox("searching")<input type="submit" value="Search"/>
+        }
+
+    </div>
+
+</div>
+
+
+@*<form method="post" asp-controller="ProjectDetails" asp-action="AddMember">*@
+<table class="table table-bordered table-striped" style="width:100%":>
+
+<thead>
+    <tr>
+        <th>
+            User_Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            E-mail
+        </th>
+         <th>
+            Password
+        </th>
+         <th>
+            Phone
+        </th>
+         <th>
+            User_Emp_Id
+        </th>
+         <th>
+            Status
+        </th>
+         
+    </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+            {
+                <td colapse="3" style="color: red;"width="50%">
+                    No User Found
+                </td>
+            }
+        else
+        {
+            foreach (var obj in Model)
+            {
+            <tr>
+                <td width="50%">
+                    @obj.User_Id
+                </td>
+                <td width="50%">
+                    @obj.User_Name
+                </td>
+                <td width="30%">
+                    @obj.User_Email
+
+                </td>
+                <td width="30%">
+                    @obj.User_Password
+
+                </td>
+                 <td width="30%">
+                    @obj.User_Phone
+
+                </td>
+                 <td width="30%">
+                    @obj.User_Emp_Id
+
+                </td>
+                 <td width="30%">
+                    @obj.Status
+
+                </td>
+     
+                      
+                <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                </td>
+            </tr>
+            
+        }
+        }
+    </tbody>
+   </table>
+   <div style="float: right;">
+       <button class="btn btn-primary" type="submit">Add</button>
+   </div>
+</form>

@@ -120,6 +120,11 @@ namespace Document_Saver.Controllers
             IEnumerable<ProjectDetails> objProjectList = _DB.ProjectDetails;
             return View(objProjectList);
         }
+        [HttpPost]
+        public IActionResult AddMember(List<User> MemberList)
+        {
+            return View();
+        }
     }
 
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Document_Saver.Migrations
 {
-    public partial class AddTablesToDatabase : Migration
+    public partial class AddTableToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,30 +50,6 @@ namespace Document_Saver.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserDetails",
-                columns: table => new
-                {
-                    User_Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    User_Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    User_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User_Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    User_Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User_Emp_Id = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
-                    User_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Created_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Updated_At = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Created_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Updated_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    Process_Id = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserDetails", x => x.User_Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Document",
                 columns: table => new
                 {
@@ -99,6 +75,36 @@ namespace Document_Saver.Migrations
                         principalTable: "ProjectDetails",
                         principalColumn: "Project_Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserDetails",
+                columns: table => new
+                {
+                    User_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    User_Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    User_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User_Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    User_Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User_Emp_Id = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    User_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Created_At = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Updated_At = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Created_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Updated_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Process_Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProjectDetailsProject_Id = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDetails", x => x.User_Id);
+                    table.ForeignKey(
+                        name: "FK_UserDetails_ProjectDetails_ProjectDetailsProject_Id",
+                        column: x => x.ProjectDetailsProject_Id,
+                        principalTable: "ProjectDetails",
+                        principalColumn: "Project_Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -145,6 +151,11 @@ namespace Document_Saver.Migrations
                 name: "IX_ProjectMember_User_Id",
                 table: "ProjectMember",
                 column: "User_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDetails_ProjectDetailsProject_Id",
+                table: "UserDetails",
+                column: "ProjectDetailsProject_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -159,10 +170,10 @@ namespace Document_Saver.Migrations
                 name: "ProjectMember");
 
             migrationBuilder.DropTable(
-                name: "ProjectDetails");
+                name: "UserDetails");
 
             migrationBuilder.DropTable(
-                name: "UserDetails");
+                name: "ProjectDetails");
         }
     }
 }
