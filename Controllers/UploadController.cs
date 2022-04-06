@@ -59,6 +59,9 @@ namespace Document_Saver.Controllers
                 var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 var filePath = Path.Combine(basePath, file.FileName);
                 var extension = Path.GetExtension(file.FileName);
+                var fileExtension = Path.GetExtension(fileName);
+                
+                var newFileName = String.Concat(Convert.ToString(Guid.NewGuid()), fileExtension);
                 if (!System.IO.File.Exists(filePath))
                 {
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -68,8 +71,9 @@ namespace Document_Saver.Controllers
                     var fileModel = new Documents
                     {
                         Document_Id = obj.Document_Id,
-                        Document_Name = obj.Document_Name,
-                        File_Name = filePath,
+                        Document_Name = fileName,
+                        File_Name = newFileName,
+                       
                         Process_Id = obj.Process_Id,
                         //ProjectDetails=obj.ProjectDetails,
                         Created_At = obj.Created_At,
@@ -150,13 +154,7 @@ namespace Document_Saver.Controllers
                 {".csv", "text/csv"}
             };
         }
-        public ActionResult Index(string searching)
-        {
-            return View(_DB.Document.Where(x => x.Document_Name.Contains(searching) || searching == null).ToList());
-         
-
-
-        }
+     
     }
 
 }
