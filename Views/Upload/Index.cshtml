@@ -1,8 +1,6 @@
 ﻿
-@{
-    ViewData["Title"] = "Index";
-    var objectDocumentlist = ViewData["DocumentList"] as IEnumerable<Documents>;
-}
+<link  href="~/css/Projects.css" rel="stylesheet"/>
+<script src = "~/js/Project.js"></script>
 <!doctype html>
 <html lang="en" dir = "ltr">
 <head>
@@ -14,134 +12,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="~/css/Documents1.css">
 </head>
+@{
+    ViewData["Title"] = "Index";
+    var objectuserlist = ViewData["DocumentList"] as IEnumerable<Documents>;
+}
+<hr />
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success alert-dismissible" style="margin-top:20px">
+        @ViewBag.Message
+    </div>
+}
 
-<body>
- 
-<div class="container"> 
-		<div class="mb-3 mt-3">
-			<form method="post" enctype="multipart/form-data">
-				<div class="mb-3">
-					<label class="form-label">
-						Upload File
-					</label>
-					<input type="file" name="file" class="form-control" />
 
-
-				</div>
-				<div class="mb-3">
-					<button type="submit" class="btn btn-primary">Upload File</button>
-					@if (ViewBag.ImageUrl != null)
-        {
-            <img alt="Uploaded Image" src="@ViewBag.ImageUrl"/>
-        }
-				</div>
-@*
-				<table class="table table-bordered table-striped" style="width:100%":>
-
-<thead>
-    <tr>
-        <th>
-            Document_Id
-        </th>
-        <th>
-            Project_Id
-        </th>
-        <th>
-           Document_Name
-        </th>
-         <th>
-            File_Name
-        </th>
-         <th>
-            Created_At
-        </th>
-         <th>
-            Updated_At
-        </th>
-         <th>
-            Created_By
-        </th>
-          <th>
-            Updated_By
-        </th>
-		 <th>
-            Is_Active
-        </th>
-		 <th>
-            Is_Deleted
-        </th>
-	
-    </tr>
-    </thead>
-   <tbody>
-        @foreach (var obj in Model)
-        {
-            <tr>
-                <td width="50%">
-                    @obj.Document_Id
-                </td>
-                <td width="50%">
-                    @obj.Project_Id
-                </td>
-                <td width="30%">
-                    @obj.Document_Name
-
-                </td>
-                 <td width="30%">
-                    @obj.File_Name
-
-                </td>
-                 <td width="30%">
-                    @obj.Created_At
-
-                </td>
-                 <td width="30%">
-                    @obj.Updated_At
-
-                </td>
-                  <td width="30%">
-                    @obj.Created_By
-
-                </td>
-				<td width="30%">
-                    @obj.Updated_By
-
-                </td>
-				<td width="30%">
-                    @obj.Is_Active
-                </td>
-                      <td width="30%">
-                    @obj.Is_Deleted
-                </td>
-				<td width="30%">
-                    @obj.Process_Id
-
-                </td>
-                <td>
-                  <div class=w-75 btn-group" role="group">
-                        <a asp-controller="Admin" asp-action="Edit"  asp-route-User_Id="@obj.Document_Id" class="btn btn-primary mx-2">Edit<i class="bi bi-pencil-square"></i></a>
-
-                    </div>
-               <div class=w-75 btn-group" role="group">
-                        <a asp-action="Delete" asp-controller="Admin" asp-route-User_Id="@obj.Document_Id" class="btn btn-danger mx-2">Delete<i class="bi bi-trash"></i></a>
-
-                    </div>
-                </td>
-            </tr>
-            
-        }
-    </tbody>
-   </table>*@
-
-		</form>
-			
-		</div>
-		</div>
-	<br /> <span>@ViewBag.Message</span>
-	@*Filter by dropdown*@
-
-	
-<div class="dropdown">  
+<div style="margin-left:876px;" class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Gallery View')">Gallery View</button>
+  <button class="tablinks" onclick="openCity(event, 'Table View')">Table View</button>
+</div>
+<div style="margin-top:53px;" id="Gallery View" class="tabcontent">
+ <div class="dropdown">  
 <button style = "margin-left:170px;margin-bottom:-160px; margin-right:10px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Filter By
   </button>
@@ -178,7 +67,16 @@
   <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
 
 </div>
-	
+<br />
+
+
+    
+     @foreach (var obj in Model)
+   
+  {
+     
+ <div class="row">
+ <div class="column" style="background-color:#aaa;">
 <div class="wrapper">
 
 	<div class="cards_wrap">
@@ -187,264 +85,66 @@
 				<div class = "box">
 		    <a href = "https://www.google.co.in/"> <img src="~/css/document2.jpg"></a>
 			 </div>
-				<div class="doc_name">Document1</div>
-				<div class="project_name">.NET</div>
-				<div class="User_name">Name1</div>
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-success">Download</button>
-				</div>*@
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-primary">Share</button>
-				</div>*@
+				<div class="doc_name">@obj.Document_Name</div>
+				<div class="project_name">@obj.Document_Name</div>
+				<div class="User_name">@obj.Document_Name</div>
+			
 
 	
-<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+<div style = "margin-top:-28px; margin-left:175px;  font-size: 1.8em;">
+<a  href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
 </div>
-
+</div>
 <div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
+<a  href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
 </div>
 </div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/xls.png">
-				</a>
-				</div>
-				<div class="doc_name">Document2</div>
-				<div class="project_name">Angular</div>
-				<div class="User_name">Name2</div>
-				@*<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-success">Download</button>
-				</div>
-				<div style = "margin-top:8px;">
-				<button type="button" class="btn btn-primary">Share</button>
-				</div>*@
-
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
+</div>
+</div>
+</div>
 </div>
 
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-
-			</div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/word.png">
-				</a>
-				</div>
-				<div class="doc_name">Document3</div>
-				<div class="project_name">AWS</div>
-				<div class="User_name">Name3</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/pdf.png">
-				</a>
-				</div>
-				<div class="doc_name">Document4</div>
-				<div class="project_name">Mobile App development</div>
-				<div class="User_name">Name4</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document5</div>
-				<div class="project_name">Node JS</div>
-				<div class="User_name">Name5</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-		<div class="card_item">
-			<div  class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document6</div>
-				<div class="project_name">UX/UI</div>
-				<div class="User_name">Name6</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document7</div>
-				<div class="project_name">NET</div>
-				<div class="User_name">Name7</div>
-
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-				
-			</div>
-		</div>
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document8</div>
-				<div class="project_name">Angular</div>
-				<div class="User_name">Name8</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document9</div>
-				<div class="project_name">AWS</div>
-				<div class="User_name">Name9</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document10</div>
-				<div class="project_name">Testing</div>
-				<div class="User_name">Name10</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document11</div>
-				<div class="project_name">UX</div>
-				<div class="User_name">Name11</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px; margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-
-		<div class="card_item">
-			<div class="card_inner">
-				<div class = "box">
-					<a href = "https://www.google.co.in/">
-				<img src="~/css/document2.jpg">
-				</a>
-				</div>
-				<div class="doc_name">Document12</div>
-				<div class="project_name">HR</div>
-				<div class="User_name">Name12</div>
-				<div style = "margin-top:-30px; margin-left:210px; font-size: 2em;">
-<a href=""> <i class ="bi bi-file-earmark-arrow-down"></i> </a>
-</div>
-
-<div style = "margin-top:-45px;  margin-left:160px; font-size:1.8em;">
-<a href="https://www.google.co.in/"><i class="bi bi-share"></i> </a>
-</div>
-			</div>
-		</div>
-	</div>
-</div> 
-
-@*Pagination*@
-
-<nav style = "margin-left:530px"  aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	<li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-
-</body>
-</html>
+}
+ </div>
+  <div style ="margin-top:-53px;" id="Table View" class="tabcontent">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Document Id </th>
+                <th>Document Name</th>
+                <th>Download</th>
+                <th>View</th>
+          
+                
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <th>@obj.Document_Id</th>
+                    
+                    <td>@obj.Document_Name</td>
+              
+             
+                 <td>
+                       @Html.ActionLink("Download", "Download", new { fileName = obj.File_Name })
+                   </td>
+                      
+                   <td width="10%">
+                       @Html.ActionLink("View", "ViewFile", new { fileName = obj.File_Name })
+                       </td>
+                    <td>
+                     <a asp-action="Delete" asp-controller="Upload" asp-route-Document_Id="@obj.Document_Id" class="btn btn-danger mx-2">Delete<i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>

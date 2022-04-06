@@ -99,9 +99,10 @@ namespace Document_Saver.Controllers
                 }
                 else if (us.Status == 1)
                 {
+                return RedirectToAction("Dashboard","ProjectDetails");
                    
 
-                    JWTTokenServices jwt = new JWTTokenServices(_config);
+                    /*JWTTokenServices jwt = new JWTTokenServices(_config);
                     string token = jwt.GenerateJSONWebToken(obj);
 
                 {
@@ -128,7 +129,7 @@ namespace Document_Saver.Controllers
                     }
 
                 }
-
+*/
 
             }
 

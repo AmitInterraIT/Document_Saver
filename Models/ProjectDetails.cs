@@ -16,7 +16,5 @@ namespace Document_Saver.Models
         public string Created_By { get; set; } = "";
         public string Updated_By { get; set; } = "";
         public string Process_Id { get; set; } = "";
-
-        public List<User> ProjectMembers { get; set; }
     }
 }
