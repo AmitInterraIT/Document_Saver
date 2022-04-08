@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Document_Saver.Controllers
 {
-    [Authorize]
+
     public class ProjectDetailsController : Controller
     {
         private readonly DocumentDetailsContext _DB;
@@ -16,7 +16,7 @@ namespace Document_Saver.Controllers
             _DB = DB;
         }
 
-        
+
 
         public IActionResult Dashboard()
         {
@@ -43,7 +43,21 @@ namespace Document_Saver.Controllers
             if (ModelState.IsValid)
             {
                 _DB.ProjectDetails.Add(obj);
-                _DB.SaveChanges();
+                int projectid = _DB.SaveChanges();
+                //foreach (var item in obj.ProjectMembers)
+                //{
+
+                //    ProjectMember pm = new ProjectMember();
+                //    pm.Project_Id = projectid;
+                //    pm.User_Id = item;
+                //    _DB.ProjectMember.Add(pm);
+                //    if (obj?.ProjectMembers != null && obj?.ProjectMembers.Count != 0)
+                //    {
+                //        _DB.SaveChanges();
+                //    }
+
+
+
                 TempData["success"] = "Data Created Successfully";
                 return RedirectToAction("Table");
             }
@@ -129,14 +143,14 @@ namespace Document_Saver.Controllers
 
 
 
-        /*  public static string baseUrl = "http://localhost:9762/api/Login";
-          [HttpGet]*/
-        /*public async Task <IActionResult> Index()
-        {
-           
-            return View();
+    /*  public static string baseUrl = "http://localhost:9762/api/Login";
+      [HttpGet]*/
+    /*public async Task <IActionResult> Index()
+    {
 
-        }*/
-      
-    }
+        return View();
+
+    }*/
+
+}
 
