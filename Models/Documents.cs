@@ -13,12 +13,13 @@ namespace Document_Saver.Models
         public string Document_Name { get; set; }
        
         public string File_Name { get; set; }
+        public string File_Type { get; set; }
         public DateTime Created_At { get; set; }= DateTime.Now;
         public DateTime Updated_At { get; set; }=   DateTime.Now;
         public string Created_By { get; set; } = "";
         public string Updated_By { get; set; }="";
         public bool Is_Deleted { get; set; }= false;
         public bool Is_Active { get; set; }=false;
-        public string Process_Id { get; set; } = "";
+        public string Process_Id { get; set; }
     }
 }

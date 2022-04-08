@@ -92,6 +92,10 @@ namespace Document_Saver.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("File_Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Is_Active")
                         .HasColumnType("bit");
 
@@ -113,8 +117,6 @@ namespace Document_Saver.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Document_Id");
-
-                    b.HasIndex("Project_Id");
 
                     b.ToTable("Document");
                 });
@@ -215,9 +217,6 @@ namespace Document_Saver.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectDetailsProject_Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -257,20 +256,7 @@ namespace Document_Saver.Migrations
 
                     b.HasKey("User_Id");
 
-                    b.HasIndex("ProjectDetailsProject_Id");
-
                     b.ToTable("UserDetails");
-                });
-
-            modelBuilder.Entity("Document_Saver.Models.Documents", b =>
-                {
-                    b.HasOne("Document_Saver.Models.ProjectDetails", "ProjectDetails")
-                        .WithMany()
-                        .HasForeignKey("Project_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProjectDetails");
                 });
 
             modelBuilder.Entity("Document_Saver.Models.ProjectMember", b =>
@@ -290,18 +276,6 @@ namespace Document_Saver.Migrations
                     b.Navigation("ProjectDetails");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Document_Saver.Models.User", b =>
-                {
-                    b.HasOne("Document_Saver.Models.ProjectDetails", null)
-                        .WithMany("ProjectMembers")
-                        .HasForeignKey("ProjectDetailsProject_Id");
-                });
-
-            modelBuilder.Entity("Document_Saver.Models.ProjectDetails", b =>
-                {
-                    b.Navigation("ProjectMembers");
                 });
 #pragma warning restore 612, 618
         }

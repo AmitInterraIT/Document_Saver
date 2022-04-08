@@ -82,66 +82,68 @@ namespace Document_Saver.Controllers
             }
 
 
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Login(User obj, string ReturnUrl, string User_Name)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(User obj, string ReturnUrl, string User_Name)
+
+        {
+           
+
+            var us = _DB.UserDetails.Where(x => x.User_Name.Equals(obj.User_Name)).FirstOrDefault();
+            if (us.Status == 0)
+            {
+                TempData["AlertMessage"] = "Your Account is not verified yet...";
+            }
+           
+
+            if (us.User_Password != obj.User_Password)
+            {
+                TempData["AlertMessage"] = "Please Enter Right Password";
+            }
+            else if (us.Status == 1)
             {
 
-                var us = _DB.UserDetails.Where(x => x.User_Name.Equals(obj.User_Name)).FirstOrDefault();
-                if (us.Status == 0)
-                {
-                    TempData["AlertMessage"] = "Your Account is not verified yet...";
-                }
 
-                if (us.User_Password != obj.User_Password)
-                {
-                    TempData["AlertMessage"] = "Please Enter Right Password";
-                }
-                else if (us.Status == 1)
-                {
-                return RedirectToAction("Dashboard","ProjectDetails");
-                   
-
-                    /*JWTTokenServices jwt = new JWTTokenServices(_config);
-                    string token = jwt.GenerateJSONWebToken(obj);
+                JWTTokenServices jwt = new JWTTokenServices(_config);
+                string token = jwt.GenerateJSONWebToken(obj);
 
                 {
                     using (var httpClient = new HttpClient())
                     {
-                        StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
-                        using (var response = await httpClient.PostAsync("http://localhost:9762/api/Login", stringContent))
+                   /*     StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
+                       using (var response = await httpClient.PostAsync("http://localhost:9762/User", stringContent))*/
                         {
-                            
+
                             if (token != null)
                             {
                                 HttpContext.Session.SetString("token", token);
-                              
-                                
+                                return RedirectToAction("Dashboard", "ProjectDetails");
+
                             }
 
-                            return RedirectToAction("Dashboard", "ProjectDetails");
                            
+
                         }
 
 
-                      
+
 
                     }
 
                 }
-*/
+
 
             }
 
-                if ((obj.User_Name == "Admin") && (obj.User_Password == "Admin"))
-                {
-                    return RedirectToAction("Index", "Admin");
-                }
-
-
-                return View();
-
+            if ((obj.User_Name == "Admin") && (obj.User_Password == "Admin"))
+            {
+                return RedirectToAction("Index", "Admin");
             }
+
+
+            return View();
+
+        }
         //public async Task<IActionResult> Login(User obj)
 
         //{
@@ -162,16 +164,16 @@ namespace Document_Saver.Controllers
         //        return RedirectToAction("Dashboard", "ProjectDetails");
 
         //    }
-        
-        //}
-            [Route("logout")]
-            public async Task<IActionResult> Logout()
-            {
-                await HttpContext.SignOutAsync();
-                return RedirectToAction("Login", "User");
-            }
 
-        public ActionResult AddUser(string searching)
+        //}
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login", "User");
+        }
+
+             public ActionResult AddUser(string searching)
         {
             return View(_DB.UserDetails.Where(x => x.User_Name.Contains(searching) || searching == null).ToList());
             //IEnumerable<User> objcategoriesList = _DB.UserDetails;

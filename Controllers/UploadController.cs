@@ -3,6 +3,9 @@
 using Document_Saver.Data;
 using Document_Saver.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using System.Diagnostics;
 
 namespace Document_Saver.Controllers
 {
@@ -15,66 +18,95 @@ namespace Document_Saver.Controllers
         }
         [HttpGet]
 
-        public IActionResult Index()
+        public IActionResult Index(string Sorting_Order,string Search_Data)
         {
             IEnumerable<Documents> objectDocumentlist = _DB.Document;
+
+            var students = from stu in _DB.Document select stu;
+            {
+                students = students.Where(stu => stu.Document_Name.ToUpper().Contains(Search_Data.ToUpper()));
+                  
+            }
+            ViewBag.SortingDocumentName = String.IsNullOrEmpty(Sorting_Order) ? "Document_Name" : "";
+
+            var Documents = from stu in _DB.Document.AsQueryable() select stu;
+            switch (Sorting_Order)
+            {
+                case "Document_Name":
+                    Documents = Documents.OrderByDescending(stu => stu.Document_Name);
+                    break;
+                default:
+                    Documents = Documents.OrderBy(stu => stu.Document_Name);
+                    break;
+
+            }
+            return View(Documents.ToList());
+           
             return View(objectDocumentlist);
-
-
         }
 
 
-        public IActionResult Download(string filename)
-        {
-            if (filename == null)
-            {
-                return Content("filename not present");
-            }
-            else
-            {
+    
+        public IActionResult Download(string fileName)
+          {
+              if (fileName == null)
+              {
+                  return Content("filename not present");
+              }
+              else
+              {
 
-                var filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", filename);
+                  var filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
 
-                byte[] bytes = System.IO.File.ReadAllBytes(filepath);
-
-
-                return File(bytes, "application/octet-stream", filename);
-            }
-        }
+                  byte[] bytes = System.IO.File.ReadAllBytes(filepath);
 
 
-
+                  return File(bytes, "application/octet-stream", fileName);
+              }
+          }
+  
+   
         public IActionResult Upload()
         {
             return View();
         }
+   
         [HttpPost]
-        public async Task<IActionResult> Upload(List<IFormFile> files, Documents obj)
+        public IActionResult Upload(IFormFile files,Documents obj)
         {
-            foreach (var file in files)
+            if (files != null)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files");
-                bool basePathExists = System.IO.Directory.Exists(basePath);
-                if (!basePathExists) Directory.CreateDirectory(basePath);
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                var filePath = Path.Combine(basePath, file.FileName);
-                var extension = Path.GetExtension(file.FileName);
-                var fileExtension = Path.GetExtension(fileName);
-                
-                var newFileName = String.Concat(Convert.ToString(Guid.NewGuid()), fileExtension);
-                if (!System.IO.File.Exists(filePath))
+                if (files.Length > 0)
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    
+                    var fileName = Path.GetFileName(files.FileName);
+
+                  
+                    var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+
+                  
+                    var fileExtension = Path.GetExtension(fileName);
+
+                  
+                    var newFileName = String.Concat(myUniqueFileName, fileExtension);
+
+              
+                    var filepath =
+            new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files")).Root + $@"\{newFileName}";
+
+                    using (FileStream fs = System.IO.File.Create(filepath))
                     {
-                        await file.CopyToAsync(stream);
+                        files.CopyTo(fs);
+                        fs.Flush();
                     }
                     var fileModel = new Documents
                     {
                         Document_Id = obj.Document_Id,
                         Document_Name = fileName,
                         File_Name = newFileName,
-                       
-                        Process_Id = obj.Process_Id,
+                        File_Type = fileExtension,
+
+                        Process_Id = obj.Process_Id = Process.GetCurrentProcess().Id.ToString(),
                         //ProjectDetails=obj.ProjectDetails,
                         Created_At = obj.Created_At,
                         Created_By = obj.Created_By,
@@ -83,18 +115,52 @@ namespace Document_Saver.Controllers
                         Is_Deleted = obj.Is_Deleted,
                         Updated_At = obj.Updated_At,
                         Updated_By = obj.Updated_By,
-                    };
+                       /* Process_Id= obj.Process_Id = Process.GetCurrentProcess().Id.ToString()*/
+                };
+
                     _DB.Document.Add(fileModel);
                     _DB.SaveChanges();
                 }
+                TempData["Message"] = "File successfully uploaded";
+                return RedirectToAction("Index");
             }
+            return View();
+        }
+        /* public ActionResult DeleteFile(string fileName)
+         {
+             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
 
-            TempData["Message"] = "File successfully uploaded";
+             if (System.IO.File.Exists(filePath))
+             {
+                 System.IO.File.Delete(filePath);
+                 return Content("Deleted");
+
+             }
+             else
+             {
+                 return Content("File Not Found");
+             }
+         }*/
+        public async Task<IActionResult> Delete(int? Document_Id )
+        {
+            var file = await _DB.Document.Where(x => x.Document_Id == Document_Id).FirstOrDefaultAsync();
+            if (file == null)
+            {
+                return Content("Error");    
+            }
+            if (System.IO.File.Exists(file.File_Name))
+            {
+                System.IO.File.Delete(file.File_Name);
+            }
+            _DB.Document.Remove(file);
+            _DB.SaveChanges();
+            TempData["Message"] = $"Removed {file.File_Name + file.File_Type} successfully from File System.";
             return RedirectToAction("Index");
         }
         //get Delete
-        public IActionResult Delete(int? Document_Id)
+       /* public IActionResult Delete(int? Document_Id)
         {
+
             if (Document_Id == null || Document_Id == 0)
             {
                 return NotFound();
@@ -110,7 +176,7 @@ namespace Document_Saver.Controllers
         //post Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? Document_Id)
+        public IActionResult DeletePost(int? Document_Id,string filename)
         {
             var obj = _DB.Document.Find(Document_Id);
             if (obj == null)
@@ -122,8 +188,7 @@ namespace Document_Saver.Controllers
             _DB.SaveChanges();
             TempData["success"] = "Data Deleted Successfully";
             return RedirectToAction("Index");
-
-        }
+}
         public FileResult ViewFile(string fileName)
         {
             string filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
@@ -153,8 +218,9 @@ namespace Document_Saver.Controllers
                 {".gif", "image/gif"},
                 {".csv", "text/csv"}
             };
-        }
+        }*/
      
     }
+    
 
 }

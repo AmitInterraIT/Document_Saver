@@ -53,7 +53,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#">Ascending</a></li>
-    <li><a class="dropdown-item" href="#">Descending</a></li>
+    <li><a class="dropdown-item" href="#">@Html.ActionLink("Descending", "Index", new { Sorting_Order = ViewBag.SortingDocumentName })</a></li>
   </ul>
 </div>
 
@@ -63,9 +63,14 @@
 @*search bar*@
 
 <div style = "margin-top:28px; margin-left:300px; width:40%;"class="form-outline">
-	
-  <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
-
+    
+    @using (Html.BeginForm("Index", "Upload", FormMethod.Get))  
+{  
+    <p>  
+      @Html.TextBox("Search_Data")  
+        <input type="submit" value="Find" />  
+    </p>  
+}  
 </div>
 <br />
 
@@ -107,18 +112,61 @@
 }
  </div>
   <div style ="margin-top:-53px;" id="Table View" class="tabcontent">
+
+@*<div class="dropdown">  
+<button style = "margin-left:170px;margin-bottom:-160px; margin-right:10px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter By
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Project</a></li>
+    <li><a class="dropdown-item" href="#">User</a></li>
+    <li><a class="dropdown-item" href="#">Document Type</a></li>
+	<li><a class="dropdown-item" href="#">Document Name</a></li>
+	<li><a class="dropdown-item" href="#">Date Between</a></li>
+  </ul>
+</div>
+*@
+
+@*Sort by dropdown*@
+
+
+<div class="dropdown">  
+<button style = "margin-bottom:-112px;margin-left:42px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort By
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Ascending</a></li>
+    <li><a class="dropdown-item" href="#">@Html.ActionLink("Descending", "Index", new { Sorting_Order = ViewBag.SortingDocumentName })</a></li>
+  </ul>
+</div>
+
+
+
+
+@*search bar*@
+
+<div style = "margin-top:28px; margin-left:300px; width:40%;"class="form-outline">
+	
+  <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+
+</div>
+      <br />
+      <br />
+
       <br />
       <br />
       <br />
-      <br />
-      <br />
+      
+
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Document Id </th>
-                <th>Document Name</th>
+                <th>Document_Id</th>
+                <th> Document_Name  </th>
                 <th>Download</th>
                 <th>View</th>
+                <th>Delete</th>
           
                 
                
@@ -129,8 +177,10 @@
             {
                 <tr>
                     <th>@obj.Document_Id</th>
+                   
                     
                     <td>@obj.Document_Name</td>
+                  
               
              
                  <td>
@@ -139,6 +189,10 @@
                       
                    <td width="10%">
                        @Html.ActionLink("View", "ViewFile", new { fileName = obj.File_Name })
+                       </td>
+                        <td width="10%">
+                       @Html.ActionLink("Delete", "Delete", new { fileName = obj.File_Name })
+                      
                        </td>
                     <td>
                      <a asp-action="Delete" asp-controller="Upload" asp-route-Document_Id="@obj.Document_Id" class="btn btn-danger mx-2">Delete<i class="bi bi-trash"></i></a>
