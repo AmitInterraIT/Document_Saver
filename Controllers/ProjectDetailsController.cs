@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Document_Saver.Controllers
 {
-
+    [Authorize]
     public class ProjectDetailsController : Controller
     {
         private readonly DocumentDetailsContext _DB;

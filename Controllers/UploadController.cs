@@ -91,8 +91,7 @@ namespace Document_Saver.Controllers
                     var newFileName = String.Concat(myUniqueFileName, fileExtension);
 
               
-                    var filepath =
-            new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files")).Root + $@"\{newFileName}";
+                    var filepath =new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files")).Root + $@"\{newFileName}";
 
                     using (FileStream fs = System.IO.File.Create(filepath))
                     {
@@ -126,101 +125,45 @@ namespace Document_Saver.Controllers
             }
             return View();
         }
-        /* public ActionResult DeleteFile(string fileName)
-         {
-             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
-
-             if (System.IO.File.Exists(filePath))
-             {
-                 System.IO.File.Delete(filePath);
-                 return Content("Deleted");
-
-             }
-             else
-             {
-                 return Content("File Not Found");
-             }
-         }*/
-        public async Task<IActionResult> Delete(int? Document_Id )
+        public IActionResult Delete(int? Document_Id)
         {
-            var file = await _DB.Document.Where(x => x.Document_Id == Document_Id).FirstOrDefaultAsync();
-            if (file == null)
-            {
-                return Content("Error");    
-            }
-            if (System.IO.File.Exists(file.File_Name))
-            {
-                System.IO.File.Delete(file.File_Name);
-            }
-            _DB.Document.Remove(file);
-            _DB.SaveChanges();
-            TempData["Message"] = $"Removed {file.File_Name + file.File_Type} successfully from File System.";
-            return RedirectToAction("Index");
-        }
-        //get Delete
-       /* public IActionResult Delete(int? Document_Id)
-        {
-
             if (Document_Id == null || Document_Id == 0)
             {
                 return NotFound();
             }
-            var UserTypeDb = _DB.Document.Find(Document_Id);
+            Documents document = _DB.Document.FirstOrDefault(u => u.Document_Id == Document_Id);
 
-            if (UserTypeDb == null)
+            if (document == null)
             {
                 return NotFound();
             }
-            return View(UserTypeDb);
+            return View(document);
         }
-        //post Delete
-        [HttpPost]
+        //Post
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? Document_Id,string filename)
+        public IActionResult DeletePost(int? Document_Id)
         {
             var obj = _DB.Document.Find(Document_Id);
             if (obj == null)
             {
                 return NotFound();
             }
-
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files");
+            var oldfile = Path.Combine(filepath, obj.File_Name);
+            if (System.IO.File.Exists(oldfile))
+            {
+                System.IO.File.Delete(oldfile);
+            }
             _DB.Document.Remove(obj);
             _DB.SaveChanges();
-            TempData["success"] = "Data Deleted Successfully";
             return RedirectToAction("Index");
-}
-        public FileResult ViewFile(string fileName)
-        {
-            string filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", fileName);
-            byte[] pdfByte = System.IO.File.ReadAllBytes(filepath);
-            return File(pdfByte, "application/pdf");
-        }
-        private string GetContentType(string path)
-        {
-            var types = GetMimeTypes();
-            var ext = Path.GetExtension(path).ToLowerInvariant();
-            return types[ext];
+
+
+
         }
 
-        private Dictionary<string, string> GetMimeTypes()
-        {
-            return new Dictionary<string, string>
-            {
-                {".txt", "text/plain"},
-                {".pdf", "application/pdf"},
-                {".doc", "application/vnd.ms-word"},
-                {".docx", "application/vnd.ms-word"},
-                {".xls", "application/vnd.ms-excel"},
-                {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
-                {".png", "image/png"},
-                {".jpg", "image/jpeg"},
-                {".jpeg", "image/jpeg"},
-                {".gif", "image/gif"},
-                {".csv", "text/csv"}
-            };
-        }*/
-     
+
+
     }
-    
-
 }
