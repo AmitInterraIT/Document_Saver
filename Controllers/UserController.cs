@@ -122,6 +122,10 @@ namespace Document_Saver.Controllers
                                 return RedirectToAction("Dashboard","ProjectDetails");
 
                             }
+                            else
+                            {
+                                return RedirectToAction("Login");
+                            }
                             
 
 

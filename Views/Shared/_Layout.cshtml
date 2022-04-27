@@ -23,7 +23,7 @@
 @*                <a class="navbar-brand" style="margin-right:60%" asp-area="" asp-controller="Home" asp-action="Index">
                     Document Management System
                 </a*@
-                @if (User.Identity.IsAuthenticated)
+                @if (@User.Identity.IsAuthenticated)
                     {
                         <a class="nav-link text-dark d-flex" asp-area="" asp-controller="Home" asp-action="Support">
                             <i class="bi bi-chat-dots-fill" style= "padding-right: 8px" alt="" width="30" height="24" class="d-inline-block align-text-top"></i>

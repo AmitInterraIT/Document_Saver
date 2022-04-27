@@ -34,13 +34,13 @@ namespace Document_Saver.Controllers
             string token = HttpContext.Session.GetString("token");
             if (token == null)
             {
-                return (RedirectToAction("Index"));
+                return RedirectToAction("Login","User");
             }
 
 
             if (!_jWTTokenServices.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
             {
-                return (RedirectToAction("Index"));
+                return (RedirectToAction("Dashboard"));
             }
             ViewBag.Message = BuildMessage(token, 50);
             return View();

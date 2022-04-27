@@ -36,7 +36,7 @@ namespace Document_Saver.Controllers
             string token = HttpContext.Session.GetString("token");
             if (token == null)
             {
-                return (RedirectToAction("Index"));
+                return RedirectToAction("Login", "User");
             }
 
 

@@ -1,16 +1,11 @@
 ﻿<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CodeMag JWT Demo</title>
-</head>
 
 <body>
-  @{
-      ViewBag.Title = "Demonstrating JWTs in ASP.NET Core MVC 5";
-  }
+  
 
-  <p>You're logged in as:&nbsp;@User.Identity.Name</p>
-  <p>@ViewBag.Message</p>
+  <p>@User.Identity.Name</p>
+  @*<p>@ViewBag.Message</p>*@
+
 </body>
 </html>
 <link href="~/css/Dashboard.css" rel="stylesheet" />
@@ -37,9 +32,7 @@
             <a href="#" class="notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
 
           </div>
-          <form method="post" asp-controller="User" asp-action="Login">
-    <button class="btn btn-lg btn-primary btn-block">Logout</button>
-</form>
+          <input id=""btnlogoff" class="btn btn-success pull-right" type="button" value="Logg off"/>
         </div>
         <button class="hamburger-icon">
           <span></span>
@@ -171,12 +164,19 @@
     </div>
   </div>
 </body>
-
-
-
-
-
-
+<script src="Scripts/jquery-1.10.2.min.js"> </script>
+<srript src="Scripts/bootstrap.min.js"></srript>
+<script>
+    $(document).ready(function(){
+        if(sessionStorage.getItem('token')==null){
+            window.location.href="Login.cshtml";
+        }
+        $('#btnlogoff').click(function(){
+            sessionStorage.removeItem('token');
+            window.location.href="Login.cshtml";
+        });
+    }) ;
+</script>
 
 
 
