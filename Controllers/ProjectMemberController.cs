@@ -10,7 +10,7 @@ namespace Document_Saver.Controllers
         {
             _DB = DB;
         }
-        public IActionResult Inde()
+        public IActionResult Index()
         {
             return View();
         }

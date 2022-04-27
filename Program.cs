@@ -1,4 +1,6 @@
+using Document_Saver;
 using Document_Saver.Data;
+using Document_Saver.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +29,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
   });
-
+builder.Services.AddScoped<UserRepository, UserRepository>();
+builder.Services.AddScoped<JWTTokenServices, JWTTokenServices>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession(Options =>
 Options.IdleTimeout = TimeSpan.FromMinutes(1));

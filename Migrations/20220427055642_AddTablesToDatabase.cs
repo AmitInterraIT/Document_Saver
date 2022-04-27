@@ -89,7 +89,8 @@ namespace Document_Saver.Migrations
                     Created_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Updated_By = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Process_Id = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Process_Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

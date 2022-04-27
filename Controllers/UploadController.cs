@@ -2,6 +2,8 @@
 
 using Document_Saver.Data;
 using Document_Saver.Models;
+using Document_Saver.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -9,17 +11,41 @@ using System.Diagnostics;
 
 namespace Document_Saver.Controllers
 {
+    [Authorize]
     public class UploadController : Controller
     {
         private readonly DocumentDetailsContext _DB;
-        public UploadController(DocumentDetailsContext DB)
+        private readonly JWTTokenServices _jWTTokenServices;
+        private readonly UserRepository _userRepository;
+        private IConfiguration _config;
+        public UploadController(DocumentDetailsContext DB, IConfiguration config, JWTTokenServices JWTTokenServices, UserRepository userRepository)
         {
             _DB = DB;
+            _jWTTokenServices = JWTTokenServices;
+            _config = config;
+            _userRepository = userRepository;
         }
         [HttpGet]
-
+        //[Authorize]
+        private User GetUser(User userInfo)
+        {
+            return _userRepository.GetUser(userInfo);
+        }
         public IActionResult Index(string Sorting_Order,string Search_Data)
         {
+            string token = HttpContext.Session.GetString("token");
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+
+
+            if (!_jWTTokenServices.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return (RedirectToAction("Dashboard"));
+            }
+            ViewBag.Message = BuildMessage(token, 50);
+         
             IEnumerable<Documents> objectDocumentlist = _DB.Document;
 
             var students = from stu in _DB.Document select stu;
@@ -46,7 +72,22 @@ namespace Document_Saver.Controllers
         }
 
 
-    
+        public IActionResult Error()
+        {
+            ViewBag.Message = "An error occured...";
+            return View();
+        }
+
+        private string BuildMessage(string stringToSplit, int chunkSize)
+        {
+            var data = Enumerable.Range(0, stringToSplit.Length / chunkSize).Select(i => stringToSplit.Substring(i * chunkSize, chunkSize));
+            string result = "The generated token is:";
+            foreach (string str in data)
+            {
+                result += Environment.NewLine + str;
+            }
+            return result;
+        }
         public IActionResult Download(string fileName)
           {
               if (fileName == null)
@@ -64,10 +105,24 @@ namespace Document_Saver.Controllers
                   return File(bytes, "application/octet-stream", fileName);
               }
           }
-  
-   
+        [HttpGet]
+       // [Authorize]
+        
         public IActionResult Upload()
         {
+            string token = HttpContext.Session.GetString("token");
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+
+
+            if (!_jWTTokenServices.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return (RedirectToAction("Dashboard"));
+            }
+            ViewBag.Message = BuildMessage(token, 50);
+
             return View();
         }
    

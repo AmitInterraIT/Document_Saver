@@ -1,5 +1,6 @@
 ﻿using Document_Saver.Data;
 using Document_Saver.Models;
+using Document_Saver.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,29 +8,55 @@ using Newtonsoft.Json;
 
 namespace Document_Saver.Controllers
 {
-    [Authorize]
+    
     public class ProjectDetailsController : Controller
     {
         private readonly DocumentDetailsContext _DB;
-        public ProjectDetailsController(DocumentDetailsContext DB)
+        private readonly JWTTokenServices _jWTTokenServices;
+        private readonly UserRepository _userRepository;
+        private IConfiguration _config;
+        public ProjectDetailsController(IConfiguration config,DocumentDetailsContext DB, JWTTokenServices JWTTokenServices, UserRepository userRepository)
         {
             _DB = DB;
+            _jWTTokenServices = JWTTokenServices;
+            _userRepository = userRepository;
+            _config = config;
         }
+        [HttpGet]
+        [Authorize]
 
-
-
+        private User GetUser(User userInfo)
+        {
+            return _userRepository.GetUser(userInfo);
+        }
         public IActionResult Dashboard()
         {
+            string token = HttpContext.Session.GetString("token");
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+
+
+            if (!_jWTTokenServices.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return (RedirectToAction("Index"));
+            }
+            ViewBag.Message = BuildMessage(token, 50);
             return View();
-            /*var accessToken = HttpContext.Session.GetString("JWTOken");
-            var Url = baseUrl;
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization= new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",accessToken);
-            string jsonstr =await client.GetStringAsync(Url);
-            var res = JsonConvert.DeserializeObject<List<IActionResult>>(jsonstr);
-            return res;*/
 
 
+
+        }
+        private string BuildMessage(string stringToSplit, int chunkSize)
+        {
+            var data = Enumerable.Range(0, stringToSplit.Length / chunkSize).Select(i => stringToSplit.Substring(i * chunkSize, chunkSize));
+            string result = "The generated token is:";
+            foreach (string str in data)
+            {
+                result += Environment.NewLine + str;
+            }
+            return result;
         }
         public IActionResult Table()
         {
@@ -140,17 +167,5 @@ namespace Document_Saver.Controllers
             return View();
         }
     }
-
-
-
-    /*  public static string baseUrl = "http://localhost:9762/api/Login";
-      [HttpGet]*/
-    /*public async Task <IActionResult> Index()
-    {
-
-        return View();
-
-    }*/
-
 }
 

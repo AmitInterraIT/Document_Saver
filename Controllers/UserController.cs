@@ -21,13 +21,16 @@ namespace Document_Saver.Controllers
 
     public class UserController : Controller
     {
-
+        private readonly JWTTokenServices _jWTTokenServices;
+        private readonly UserRepository _userRepository;
         private IConfiguration _config;
         private readonly DocumentDetailsContext _DB;
-        public UserController(IConfiguration config, DocumentDetailsContext DB)
+        public UserController(IConfiguration config, DocumentDetailsContext DB, JWTTokenServices JWTTokenServices, UserRepository userRepository)
         {
             _config = config;
             _DB = DB;
+            _jWTTokenServices= JWTTokenServices;
+            _userRepository = userRepository;
         }
 
        
@@ -110,26 +113,21 @@ namespace Document_Saver.Controllers
                 {
                     using (var httpClient = new HttpClient())
                     {
-                   /*     StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
-                       using (var response = await httpClient.PostAsync("http://localhost:9762/User", stringContent))*/
+                
                         {
-
                             if (token != null)
                             {
+                          
                                 HttpContext.Session.SetString("token", token);
-                                return RedirectToAction("Dashboard", "ProjectDetails");
+                                return RedirectToAction("Dashboard","ProjectDetails");
 
                             }
+                            
 
-                           
 
                         }
-
-
-
-
+                      
                     }
-
                 }
 
 
@@ -139,33 +137,54 @@ namespace Document_Saver.Controllers
             {
                 return RedirectToAction("Index", "Admin");
             }
+            return Unauthorized();
 
 
+
+        }
+      /*  [Authorize]
+        [Route("mainWindow")]
+        [HttpGet]
+        private User GetUser(User userInfo)
+        {
+            return _userRepository.GetUser(userInfo);
+        }
+        public IActionResult MainWindow()
+        {
+            string token = HttpContext.Session.GetString("token");
+            if (token == null)
+            {
+                return (RedirectToAction("Index"));
+            }
+
+
+            if (!_jWTTokenServices.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return (RedirectToAction("Dashboard"));
+            }
+            ViewBag.Message = BuildMessage(token, 50);
             return View();
 
         }
-        //public async Task<IActionResult> Login(User obj)
 
-        //{
-        //    using (var httpClient = new HttpClient())
-        //    {
-        //        StringContent stringContent = new StringContent(JsonConvert.SerializeObject(obj));
-        //        using (var response = await httpClient.PostAsync("http://localhost:9762/api/Login", stringContent))
-        //        {
-        //            string token = await response.Content.ReadAsStringAsync();
-        //            if (token == "Invalid credentials")
-        //            {
-        //                return RedirectToAction("Login", "User");
-        //            }
+        public IActionResult Error()
+        {
+            ViewBag.Message = "An error occured...";
+            return View();
+        }
 
-        //            HttpContext.Session.SetString("token", token);
-        //        }
+        private string BuildMessage(string stringToSplit, int chunkSize)
+        {
+            var data = Enumerable.Range(0, stringToSplit.Length / chunkSize).Select(i => stringToSplit.Substring(i * chunkSize, chunkSize));
+            string result = "The generated token is:";
+            foreach (string str in data)
+            {
+                result += Environment.NewLine + str;
+            }
+            return result;
+        }
+*/
 
-        //        return RedirectToAction("Dashboard", "ProjectDetails");
-
-        //    }
-
-        //}
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {

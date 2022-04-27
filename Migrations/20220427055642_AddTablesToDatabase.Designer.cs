@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Document_Saver.Migrations
 {
     [DbContext(typeof(DocumentDetailsContext))]
-    [Migration("20220408111723_AddTablesToDatabase")]
+    [Migration("20220427055642_AddTablesToDatabase")]
     partial class AddTablesToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -216,6 +216,10 @@ namespace Document_Saver.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Process_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

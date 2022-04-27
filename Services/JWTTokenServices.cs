@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Document_Saver.Services
 {   
-    public class JWTTokenServices
+    public class JWTTokenServices 
     {
         private const double EXPIRY_DURATION_MINUTES = 30;
         private IConfiguration _config;

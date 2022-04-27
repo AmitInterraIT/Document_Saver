@@ -1930,3 +1930,8 @@ C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\obj\Debug\net6.0\Docum
 C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\obj\Debug\net6.0\Document_Saver.genruntimeconfig.cache
 C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\AniketS\Documents\GitHub\Document_Saver\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\RahulS\Desktop\Project\New folder\Document_Saver\obj\Debug\net6.0\Document_Saver.MvcApplicationPartsAssemblyInfo.cs

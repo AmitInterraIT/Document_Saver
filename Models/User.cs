@@ -35,5 +35,6 @@ namespace Document_Saver.Models
         public int Status { get; set; } = 0;
 
         public string Process_Id { get; set; } = "";
+        public string Role { get; internal set; } = "";
     }
 }
