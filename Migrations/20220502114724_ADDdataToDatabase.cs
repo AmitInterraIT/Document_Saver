@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Document_Saver.Migrations
 {
-    public partial class AddTablesToDatabase : Migration
+    public partial class ADDdataToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

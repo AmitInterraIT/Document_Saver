@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace Document_Saver.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class UploadController : Controller
     {
         private readonly DocumentDetailsContext _DB;
